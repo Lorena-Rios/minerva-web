@@ -5,15 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Minerva - Criar Conta</title>
         <link rel="icon" href="./../static/images/logo.png" type="image">
-        <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="../input.css" />
+        <link href="/dist/output.css" rel="stylesheet">
     </head>
 
 
     <body class="min-h-screen flex items-center justify-center bg-[#B8C98C] relative">
 
         <!-- Logo no topo esquerdo -->
-        <div class="absolute top-6 left-8 z-20">
+        <div class="absolute top-6 left-8 z-10">
             <a href="../index.html">
                 <img src="../static/images/logo.png" alt="Logo Minerva" class="w-10 h-10">
             </a>
@@ -22,24 +22,25 @@
         <!-- Container principal -->
         <div
         class="flex flex-col md:flex-row items-center justify-center gap-10 
-                p-6 md:p-8 w-[90%] max-w-6xl bg-transparent"
+                p-6 md:p-8 w-[90%] max-w-6xl bg-transparent border border-white rounded-3xl"
         >
 
         <!-- Formulário -->
         <main
             class="flex-1 bg-white rounded-3xl shadow-sm px-6 py-10 
-                flex flex-col gap-6 max-w-lg w-full"
+                flex flex-col gap-6 max-w-lg w-full z-20"
         >
             <div>
             <h1 class="text-2xl font-bold text-[#6A9850] mb-6 ">
                 Criar conta
             </h1>
 
-            <form class="space-y-4">
+            <form class="space-y-4" onsubmit="event.preventDefault(); handleSignUp();">
                 <!-- Email -->
                 <div>
                 <label class="text-sm font-medium text-[#8C539D]">Email*</label>
                 <input
+                    id="email"
                     type="email"
                     placeholder="Digite seu Email"
                     class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
@@ -51,6 +52,7 @@
                 <div>
                 <label class="text-sm font-medium text-[#8C539D]">Usuário*</label>
                 <input
+                    id="users"
                     type="text"
                     placeholder="Usuário"
                     class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
@@ -63,6 +65,7 @@
                 <div class="w-1/2">
                     <label class="text-sm font-medium text-[#8C539D]">Criar Senha</label>
                     <input
+                    id="password"
                     type="password"
                     placeholder="Senha"
                     class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
@@ -72,6 +75,7 @@
                 <div class="w-1/2">
                     <label class="text-sm font-medium text-[#8C539D]">Repetir Senha</label>
                     <input
+                    id="confirm-password"
                     type="password"
                     placeholder="Senha"
                     class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
@@ -84,7 +88,6 @@
                 <button
                 type="submit"
                 class="w-full mt-6 bg-[#9053A7] hover:bg-[#7F4793] text-white font-medium py-3 rounded-xl shadow-md transition text"
-                href="../dashboard/index.html"
                 >
                 Cadastrar
                 </button>
@@ -109,5 +112,6 @@
 
         </div>
         <script src="../static/js/scripts.js"></script>
+        <script type="module" src="../static/js/signUp.js"></script>
     </body>
 </html>

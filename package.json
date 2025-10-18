@@ -1,10 +1,14 @@
 {
   "devDependencies": {
-    "tailwindcss": "^3.4.17"
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18"
   },
   "scripts": {
     "tailwind": "npx tailwindcss -i ./src/input.css -o ./src/static/css/style.css --watch",
-    "dev:css": "tailwindcss -i ./src/input.css -o ./src/static/css/style.css --watch"
+    "dev:css": "tailwindcss -i ./src/input.css -o ./src/static/css/style.css --watch",
+    "dev": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
   },
   "dependencies": {
     "aos": "^2.3.4",
@@ -13,3 +17,4 @@
     "swiper": "^11.2.10"
   }
 }
+
