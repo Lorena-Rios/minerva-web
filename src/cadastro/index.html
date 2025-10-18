@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Minerva - Criar Conta</title>
+        <link rel="icon" href="./../static/images/logo.png" type="image">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="../input.css" />
+    </head>
+
+
+    <body class="min-h-screen flex items-center justify-center bg-[#B8C98C] relative">
+
+        <!-- Logo no topo esquerdo -->
+        <div class="absolute top-6 left-8 z-20">
+            <a href="../index.html">
+                <img src="../static/images/logo.png" alt="Logo Minerva" class="w-10 h-10">
+            </a>
+        </div>
+
+        <!-- Container principal -->
+        <div
+        class="flex flex-col md:flex-row items-center justify-center gap-10 
+                p-6 md:p-8 w-[90%] max-w-6xl bg-transparent"
+        >
+
+        <!-- Formulário -->
+        <main
+            class="flex-1 bg-white rounded-3xl shadow-sm px-6 py-10 
+                flex flex-col gap-6 max-w-lg w-full"
+        >
+            <div>
+            <h1 class="text-2xl font-bold text-[#6A9850] mb-6 ">
+                Criar conta
+            </h1>
+
+            <form class="space-y-4">
+                <!-- Email -->
+                <div>
+                <label class="text-sm font-medium text-[#8C539D]">Email*</label>
+                <input
+                    type="email"
+                    placeholder="Digite seu Email"
+                    class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
+                        focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
+                />
+                </div>
+
+                <!-- Usuário -->
+                <div>
+                <label class="text-sm font-medium text-[#8C539D]">Usuário*</label>
+                <input
+                    type="text"
+                    placeholder="Usuário"
+                    class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
+                        focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
+                />
+                </div>
+
+                <!-- Senhas -->
+                <div class="flex gap-4">
+                <div class="w-1/2">
+                    <label class="text-sm font-medium text-[#8C539D]">Criar Senha</label>
+                    <input
+                    type="password"
+                    placeholder="Senha"
+                    class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
+                            focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
+                    />
+                </div>
+                <div class="w-1/2">
+                    <label class="text-sm font-medium text-[#8C539D]">Repetir Senha</label>
+                    <input
+                    type="password"
+                    placeholder="Senha"
+                    class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
+                            focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
+                    />
+                </div>
+                </div>
+
+                <!-- Botão -->
+                <button
+                type="submit"
+                class="w-full mt-6 bg-[#9053A7] hover:bg-[#7F4793] text-white font-medium py-3 rounded-xl shadow-md transition text"
+                href="../dashboard/index.html"
+                >
+                Cadastrar
+                </button>
+            </form>
+            </div>
+
+            <!-- Link de login -->
+            <p class="text-sm text-center text-[#9A5CAD] mt-4">
+            Já tem conta?
+            <a href="../login/index.html" class="text-[#9A5CAD] font-bold hover:underline">
+                Fazer Login
+            </a>
+            </p>
+        </main>
+
+        
+            <!-- Caixa ilustrativa -->
+            <div
+                class="hidden md:flex p-8 md:p-10 w-full max-w-lg h-[32rem]
+                    flex-col justify-between rounded-2xl border border-white"
+            ></div>
+
+        </div>
+        <script src="../static/js/scripts.js"></script>
+    </body>
+</html>

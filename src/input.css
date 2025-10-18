@@ -6,9 +6,9 @@
 
 :root {
   /* Definição das variáveis de cor */
-  --verde-escuro: #81A86B;   /* Azul padrão do Tailwind */
+  --verde-escuro: #81A86B;
   --verde-claro: #B5CA8A;
-  --roxo-escuro: #9A5CAD; /* Verde padrão do Tailwind */
+  --roxo-escuro: #9A5CAD;
   --roxo-claro: #C8A9E0;
 }
 
@@ -19,7 +19,7 @@
 }
 
 body {
-  font-family: 'Rawline', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .visible {
@@ -38,3 +38,4 @@ a{
   .text-white{
     color: #fff;
   }
+
