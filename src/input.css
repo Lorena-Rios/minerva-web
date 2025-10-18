@@ -1,29 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
+:root {
+  /* Definição das variáveis de cor */
+  --verde-escuro: #81A86B;   /* Azul padrão do Tailwind */
+  --verde-claro: #B5CA8A;
+  --roxo-escuro: #9A5CAD; /* Verde padrão do Tailwind */
+  --roxo-claro: #C8A9E0;
+}
+
+.inter {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+
+}
+
 body {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Rawline', sans-serif;
 }
 
 .visible {
     opacity: 1 !important;
 }
-body{
-    font-family: 'Rawline', sans-serif;
-}
 
 html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 20px;
-  }
-  
+  scroll-behavior: smooth;
+  scroll-padding-top: 20px;
+}
 
 a{
   cursor: pointer;
 }
-
 
   .text-white{
     color: #fff;

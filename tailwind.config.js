@@ -8,7 +8,8 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'], // usa "Montserrat" como sans
-        rawline: ['Rawline', 'sans-serif'] // opcional, alias dedicado
+        rawline: ['Rawline', 'sans-serif'], // opcional, alias dedicado
+        inter: ['Inter', 'sans-serif']
       },
     },
   },

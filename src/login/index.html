@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minerva - Login</title>
+    <link rel="icon" href="./../static/images/logo.png" type="image">
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+  </head>
+    <body class="min-h-screen flex items-center justify-center relative"
+                style="background-image: linear-gradient(to bottom, #9a5cad, #824e92, #6b4078, #54335f, #3f2647);">
+
+        <!-- Container principal -->
+        <div class="border border-[#F8F8F8] rounded-3xl
+                    flex flex-col md:flex-row items-center justify-center gap-10 
+                    p-0 md:p-8 w-[90%] max-w-4xl">
+
+        <!-- Ilustração -->
+        <div class="flex-1 flex items-center justify-center">
+            <img 
+            src="../static/images/welcome.png" 
+            alt="Ilustração" 
+            class="w-64 md:w-[100%] p-4"
+            />
+        </div>
+
+        <!-- Card de login -->
+        <div class="flex-1 bg-white rounded-3xl shadow-xl px-6 py-10 flex flex-col gap-6 max-w-sm w-full">
+            
+            <!-- Logo no card -->
+            <div class="flex justify-center">
+                <img src="../static/images/Minerva_logo.png"/>
+            </div>
+
+            <!-- Título -->
+            <div class="text-center">
+            <h1 class="text-2xl font-bold text-[#9A5CAD]">Faça login</h1>
+            <p class="text-[#81A86B] text-xl font-medium">Vamos aprender juntos!</p>
+            </div>
+
+            <!-- Inputs -->
+            <form class="flex flex-col gap-4">
+            <div>
+                <input type="email" placeholder="Email"
+                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#9A5CAD]" />
+            </div>
+
+            <div>
+                <input type="password" placeholder="Senha"
+                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#9A5CAD]" />
+                <a href="#" class="text-sm text-[#9A5CAD] hover:text-[#C8A9E0] float-right mt-1">Esqueceu sua senha?</a>
+            </div>
+
+            <!-- Botão -->
+            <button type="submit"
+                class="mt-4 bg-[#81A86B] text-white font-semibold py-3 rounded-xl hover:bg-[#B5CA8A] transition">
+                Entrar
+            </button>
+            </form>
+
+            <!-- Link de cadastro -->
+            <p class="text-center text-sm text-[#9A5CAD]">
+            Não tem conta? <a href="#" class="text-[#9A5CAD] font-bold hover:underline">Cadastre-se</a>
+            </p>
+        </div>
+        </div>
+    </body>
+</html>
