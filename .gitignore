@@ -1,0 +1,30 @@
+# Diretórios de dependências
+node_modules/
+
+# Diretórios de build/compilação
+dist/
+build/
+coverage/
+
+# Variáveis de ambiente
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log
+*.log
+
+# Arquivos de sistema e OS
+.DS_Store
+Thumbs.db
+
+# Configurações do VS Code (opcional)
+.vscode/
+
+# Ignorar o cache do npm (se existir)
+.npm/
+
+# Ignorar arquivos temporários de teste ou depuração
+*.bak
+*.swp

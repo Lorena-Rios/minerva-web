@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./src/input.css -o ./src/static/css/style.css --watch",
+    "dev:css": "tailwindcss -i ./src/input.css -o ./src/static/css/style.css --watch"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "bootstrap": "^5.3.7",
+    "gsap": "^3.13.0",
+    "swiper": "^11.2.10"
+  }
+}

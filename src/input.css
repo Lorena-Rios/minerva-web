@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.visible {
+    opacity: 1 !important;
+}
+body{
+    font-family: 'Rawline', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+  }
+  
+
+a{
+  cursor: pointer;
+}
+
+
+  .text-white{
+    color: #fff;
+  }
