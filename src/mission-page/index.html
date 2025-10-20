@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minerva - Missões</title>
+    <link rel="icon" href="./../static/images/logo.png" type="image">
+    <link rel="stylesheet" href="../input.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-[#B5CA8A] min-h-screen flex">
+    <!-- Sidebar -->
+    <aside 
+      id="sidebar" 
+      class="w-0 p-0 lg:w-64 lg:p-6 bg-white shadow-xl flex flex-col justify-between rounded-r-3xl transition-all duration-300 ease-in-out overflow-hidden"
+    >
+      <div>
+        <!-- Logo -->
+        <div class="flex items-start mb-10">
+          <img src="../static/images/logo.png" alt="Logo Minerva" class="w-16 h-16" />
+        </div>
+
+        <!-- Menu -->
+        <nav class="flex flex-col space-y-3">
+          <a href="/src/dashboard/index.html" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 hover:bg-gray-100 transition">
+            <i class="ph-house-simple text-xl text-[#9A5CAD]"></i>
+            Home
+          </a>
+
+          <a href="/src/mission-page/index.html" class="flex items-center gap-3 p-3 rounded-xl bg-[#9A5CAD] text-white">
+            <i class="ph-book-open text-xl"></i>
+            Missões
+          </a>
+
+          <a href="#" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 hover:bg-gray-100 transition">
+            <i class="ph-trophy text-xl text-[#9A5CAD]"></i>
+            Score
+          </a>
+
+          <a href="#" class="flex items-center gap-3 p-3 rounded-xl text-gray-600 hover:bg-gray-100 transition">
+            <i class="ph-user text-xl text-[#9A5CAD]"></i>
+            Perfil
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sair -->
+      <a href="../login/index.html" class="flex items-center gap-3 p-3 text-[#9A5CAD] hover:text-[#7f4793] font-medium mt-6">
+        <i class="ph-sign-out text-xl"></i>
+        Sair
+      </a>
+    </aside>
+    
+    <!-- Botão lateral -->
+    <button 
+      onclick="toggleSidebar()" 
+      id="sidebar-toggle" 
+      class="absolute top-6 left-4 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition z-20 md:hidden lg:hidden" 
+    >
+      <i id="toggle-icon" class="ph-caret-right text-xl text-[#9A5CAD]"></i>
+    </button>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-8">
+      <!-- Filter Buttons -->
+      <div class="flex gap-4 mb-8 justify-center">
+        <button class="px-6 py-2 bg-[#6A9850] text-white rounded-full font-medium hover:bg-[#6A9850]/80 transition shadow-md">
+          Todas
+        </button>
+        <button class="px-6 py-2 bg-white text-[#6A9850] rounded-full font-medium hover:bg-[#6A9850] hover:text-white transition shadow-md">
+          Finalizadas
+        </button>
+        <button class="px-6 py-2 bg-white text-[#6A9850] rounded-full font-medium hover:bg-[#6A9850] hover:text-white transition shadow-md">
+          Bloqueadas
+        </button>
+      </div>
+
+      <!-- Missions List -->
+      <div class="space-y-4">
+        <!-- Mission 1 -->
+         <a href="/src/mission-page/missão-conteudo/index.html" class="p-6">
+            <div class="bg-white rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition max-w-4xl mx-auto">
+                <div class="w-[20%] h-24 bg-[#9A5CAD] rounded-md flex-shrink-0"></div>
+                <div class="flex-1">
+                    <h3 class="text-xl font-bold text-gray-800">Fluxogramas</h3>
+                </div>
+            </div>
+        </a>
+
+        <!-- Mission 2 -->
+        <a href="#" class="p-6" >
+          <div class="bg-white rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition max-w-4xl mx-auto">
+            <div class="w-[20%] h-24 bg-[#9A5CAD] rounded-md flex-shrink-0"></div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-800">Variáveis e Operações</h3>
+            </div>
+          <div class="rounded-lg flex items-center justify-center flex-shrink-0">
+            <img src="../static/images/padlock1.png" alt="Locked" class="w-16 h-16 text-yellow-600">
+          </div>
+            </div>
+        </a>
+
+        <!-- Mission 3 -->
+        <a href="#" class="p-6">
+          <div class="bg-white rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition max-w-4xl mx-auto">
+            <div class="w-[20%] h-24 bg-[#9A5CAD] rounded-md flex-shrink-0"></div>
+            <div class="flex-1">
+            <h3 class="text-xl font-bold text-gray-800">Entradas e Saídas</h3>
+          </div>
+          <div class="rounded-lg flex items-center justify-center flex-shrink-0">
+            <img src="../static/images/padlock1.png" alt="Locked" class="w-16 h-16 text-yellow-600">
+          </div>
+        </div>
+        </a>
+
+        <!-- Mission 4 -->
+        <a href="#" class="p-6">
+        <div class="bg-white rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition max-w-4xl mx-auto">
+          <div class="w-[20%] h-24 bg-[#9A5CAD] rounded-md flex-shrink-0"></div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-gray-800">Condicionais</h3>
+          </div>
+          <div class="rounded-lg flex items-center justify-center flex-shrink-0">
+            <img src="../static/images/padlock1.png" alt="Locked" class="w-16 h-16 text-yellow-600">
+          </div>
+        </div>
+        </a>
+
+        <!-- Mission 5 -->
+        <a href="#" class="p-6">
+        <div class="bg-white rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition max-w-4xl mx-auto">
+          <div class="w-[20%] h-24 bg-[#9A5CAD] rounded-md flex-shrink-0"></div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-gray-800">Laços de repetição</h3>
+          </div>
+          <div class="rounded-lg flex items-center justify-center flex-shrink-0">
+            <img src="../static/images/padlock1.png" alt="Locked" class="w-16 h-16 text-yellow-600">
+          </div>
+        </div>
+        </a>
+
+        <!-- Mission 6 -->
+        <a href="#" class="p-6">
+        <div class="bg-white rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition max-w-4xl mx-auto">
+          <div class="w-[20%] h-24 bg-[#9A5CAD] rounded-md flex-shrink-0"></div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-gray-800">Funções e Modularização</h3>
+          </div>
+          <div class="rounded-lg flex items-center justify-center flex-shrink-0">
+            <img src="../static/images/padlock1.png" alt="Locked" class="w-16 h-16  text-yellow-600">
+          </div>
+        </div>
+        </a>
+
+
+      </div>
+    </div>
+    
+
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <script src="../static/js/scripts.js"></script>
+    <script type="module" src="../static/js/functions/mission-page.js"></script>
+  </body>
+</html>

@@ -17,6 +17,7 @@ async function handleSignUp() {
     const users = document.getElementById("users").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
+    const passwordConfirm = document.getElementById("confirm-password").value;
     
 
     if (!users) {

@@ -55,8 +55,5 @@ async function handleLogin() {
   }
 }
 
-
-
-
 window.handleLogin = handleLogin;
 
