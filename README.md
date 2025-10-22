@@ -1,4 +1,4 @@
-# Minerva - App de Apoio ao Ensino de Lógica de Programação
+# Minerva - Plataforma de Apoio ao Ensino de Lógica de Programação
  ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 
 **Minerva** é uma plataforma desenvolvida em **TailWind CSS** para auxiliar estudantes no ensino e aprendizagem de **lógica de programação** de forma gamificada.
