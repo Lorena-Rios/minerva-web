@@ -1,10 +1,7 @@
-function openLogin() {
-    window.location.href = "./login/index.html"; 
-}
 
 
 // Garante que a função esteja disponível globalmente para o 'onclick'
-window.toggleSidebar = function() {
+export function toggleSidebar() {
     console.log("toggleSidebar foi chamada!"); // Teste para ver se a função roda
 
     const sidebar = document.getElementById('sidebar');
@@ -39,6 +36,7 @@ window.toggleSidebar = function() {
         console.error("Erro: Um dos elementos (sidebar, toggleBtn, toggleIcon) não foi encontrado.");
     }
 }
+
 
 
 // =======================================================

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Minerva - Missões</title>
+      <link rel="icon" href="/public/images/logo.png" type="image">
+      <link rel="stylesheet" href="/public/css/input.css" />
+      <link href="/public/css/dist/output.css" rel="stylesheet">
+    </head>
+
+    <body class="bg-[#F6F7F1] min-h-screen flex">
+
+      <!-- sidebar-container -->
+      <div id="sidebar-container"></div>
+
+        <main 
+        id="main-content" 
+        class="flex-1 py-10 pl-16 pr-6 lg:px-10 relative transition-all duration-300 ease-in-out"
+      >
+
+        <div class="max-w-4xl mx-auto">
+          
+          <div class="bg-[#6A9850] text-white rounded-2xl p-6 shadow-lg flex flex-row items-center gap-6">
+            <div class="w-20 h-20 bg-white/30 rounded-lg flex-shrink-0">
+              </div>
+            <div>
+              <h1 class="text-3xl font-bold flex items-center gap-2">
+                Fluxogramas 
+              </h1>
+              <p class="text-sm opacity-80 mt-1">1/6 Missões Concluídas</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+            
+            <a href="#" 
+              onclick="event.preventDefault(); openModal()"
+              class="bg-white rounded-2xl p-8 shadow-lg h-64 flex items-center transition hover:shadow-xl hover:-translate-y-1">
+              <h2 class="text-3xl font-bold text-[#9A5CAD]">O que é um Algoritmo?</h2>
+            </a>
+            
+            <a href="#" class="bg-white rounded-2xl p-8 shadow-lg h-64 flex items-center justify-start
+                              transition hover:shadow-xl hover:-translate-y-1">
+              <h2 class="text-3xl font-bold text-[#9A5CAD] text-left">Fluxograma</h2>
+            </a>
+            
+            <a href="#" class="bg-white rounded-2xl p-8 shadow-lg h-64 flex items-center 
+                              transition hover:shadow-xl hover:-translate-y-1">
+              <h2 class="text-3xl font-bold text-[#9A5CAD]">Planejamento</h2>
+            </a>
+            
+            <a href="#" class="bg-white rounded-2xl p-8 shadow-lg h-64 flex items-center justify-start
+                              transition hover:shadow-xl hover:-translate-y-1">
+              <h2 class="text-3xl font-bold text-[#9A5CAD] text-left">Desafio Final</h2>
+            </a>
+
+          </div>
+
+        </div>
+        </main>
+
+        <div 
+          id="modal" 
+          class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          onclick="closeModal()"
+        >
+          <div 
+            class="bg-[#F6F7F1] rounded-2xl shadow-xl p-8 max-w-2xl w-full"
+            onclick="event.stopPropagation()"
+          >
+            <h2 class="text-4xl font-bold text-[#9A5CAD] text-center">
+              O que é um Algoritmo?
+            </h2>
+
+            <div class="text-gray-700 text-lg mt-6 space-y-4">
+              <p>
+                is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+              </p>
+              <p>
+                is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              </p>
+            </div>
+
+            <a href="/src/quiz/index.html">
+            <button 
+              onclick="closeModal()"
+              class="w-full bg-[#6A9850] text-white font-bold text-xl py-4 px-6 rounded-xl mt-8 
+                    transition hover:bg-opacity-80 flex items-center justify-center gap-2"
+            >
+              Prosseguir👉
+            </button>
+            </a>
+          </div>
+        </div>
+
+        <script src="https://unpkg.com/phosphor-icons"></script>
+        <script src="/public/js/main.js"></script>
+        <script type="module" src="/public/js/functions/mission-content.js"></script>
+    </body>
+</html>
