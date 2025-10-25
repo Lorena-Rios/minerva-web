@@ -9,7 +9,7 @@
   "scripts": {
     "tailwind": "npx tailwindcss -i ./src/input.css -o ./src/static/css/style.css --watch",
     "dev:css": "tailwindcss -i ./src/input.css -o ./src/static/css/style.css --watch",
-    "dev": "npx tailwindcss -i /public/css/input.css -o /public/css/dist/output.css --watch",
+    "dev": "npx tailwindcss -i ./public/css/input.css -o /public/css/dist/output.css --watch",
     "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
   },
   "dependencies": {

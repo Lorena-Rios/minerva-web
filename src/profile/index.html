@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Minerva - Dashboard</title>
+        <link rel="icon" href="/public/images/logo.png" type="image">
+        <link rel="stylesheet" href="/public/css/input.css" />
+        <link href="/public/css/dist/output.css" rel="stylesheet">
+
+    </head>
+
+    <body class="bg-gradient-to-b from-[#B5CA8A]/65 to-white min-h-screen flex flex-col items-center justify-center p-6">
+        <!-- sidebar-container -->
+        <div id="sidebar-container"></div>
+        <!-- CARD PRINCIPAL -->
+        <div class="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 transition-all duration-300">
+        
+        <!-- LADO ESQUERDO -->
+        <div class="flex flex-col gap-5 flex-1">
+            <h2 class="text-xl font-bold text-[#4E3B53]">Seus Pontos</h2>
+
+            <!-- Nível -->
+            <div class="flex items-center gap-3">
+            <img src="/public/icon/level-icon.png" alt="ícone nivel" class="w-8 h-8">
+            <div>
+                <p class="text-[#6A9850] font-bold">Nível</p>
+                <p class="text-[#6A9850] text-sm">1</p>
+            </div>
+            </div>
+
+            <!-- XP -->
+            <div class="flex items-center gap-3">
+            <img src="/public/icon/xp-icon.png" alt="ícone XP" class="w-8 h-8">
+            <div>
+                <p class="text-[#6A9850]  font-bold">XP</p>
+                <p class="text-[#6A9850] text-sm">100</p>
+            </div>
+            </div>
+
+            <!-- Barra de progresso -->
+            <div class="bg-[#9A5CAD] rounded-full h-10 p-4 flex flex-col justify-center">
+                <div class="w-full bg-[#E6DCC3] rounded-full h-4">
+                <div class="bg-[#6A9850] h-4 rounded-full w-[60%] transition-all duration-300"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LADO DIREITO -->
+        <div class="flex flex-col items-center justify-center text-center">
+            <div class="w-24 h-24 rounded-full border-[5px] border-[#9A5CAD] flex items-center justify-center bg-[#E5D8ED]">
+            <img src="/public/images/profile_picture.png" alt="Foto de perfil" class="rounded-full">
+            </div>
+            <p class="text-[#4E3B53] font-medium mt-2">Lorena Rios</p>
+            <button class="text-[#9A5CAD] text-sm flex items-center gap-1 hover:text-[#7c4897]">
+            <i class="ph-pencil-simple text-xs"></i> Editar
+            </button>
+        </div>
+        </div>
+
+        <!-- Ícones -->
+        <script src="https://unpkg.com/phosphor-icons"></script>
+        <script src="/public/js/main.js"></script>
+        <script type="module" src="/public/js/functions/profile.js"></script>
+    </body>
+</html>
