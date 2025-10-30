@@ -1,9 +1,4 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js";
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from '/public/js/configs/config.js';
-import { loadSidebar } from "/public/js/utils/loadPartial.js";
-import { toggleSidebar } from "/public/js/main.js";
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+import { supabase } from "/public/js/configs/config.js";
 
 // Função de Navegação para o Dashboard
 function openDashboard() {
@@ -42,6 +37,7 @@ async function handleSignUp() {
         alert("As senhas não coincidem. Por favor, tente novamente.");
         return;
     }
+    console.log({ email, password, users });
 
     // 2. Tenta cadastrar o usuário no Auth (autenticação) do Supabase
     // O resto da sua lógica permanece igual...

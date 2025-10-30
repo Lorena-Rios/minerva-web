@@ -30,66 +30,43 @@
         </p>
       </div>
 
-<!-- Grid dos Cards -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-
-  <!-- Coluna da esquerda -->
-  <div class="flex flex-col gap-6 md:col-span-2">
-    
-    <!-- Missões -->
-    <a href="/src/mission-page/index.html" class="no-underline">
-      <div class="bg-[#9A5CAD] text-white rounded-2xl p-6 shadow-lg flex flex-col justify-end 
-                  h-[250px] sm:h-[300px] md:h-[50%] md:min-h-[500px]
-                  transition hover:shadow-xl hover:-translate-y-1 relative overflow-hidden">
-        <!-- Placeholder imagem -->
-        <img src="https://via.placeholder.com/400x300" alt="Missões"
-             class="absolute inset-0 w-full h-full object-cover opacity-20">
-        <div class="relative z-10">
+      <!-- Grid dos Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        
+        <!-- Missões -->
+        <a href="/src/mission-page/index.html" class="no-underline">
+        <div class="bg-[#9A5CAD] text-white rounded-2xl p-6 shadow-lg flex flex-col justify-end aspect-square sm:aspect-[4/3] 
+                    transition hover:shadow-xl hover:-translate-y-1">
           <p class="text-lg sm:text-xl font-bold text-[#C8A9E0]">Comece suas</p>
           <h2 class="text-3xl sm:text-5xl font-bold text-[#C8A9E0]">Missões</h2>
         </div>
-      </div>
-    </a>
+        </a>
 
-    <!-- Sobre o Minerva -->
-    <a href="#" class="no-underline">
-      <div class="bg-[#C8A9E0] rounded-2xl p-6 shadow-lg flex flex-col justify-end 
-                  h-[250px] sm:h-[300px] md:h-[25%] md:min-h-[250px]
-                  transition hover:shadow-xl hover:-translate-y-1 relative overflow-hidden">
-        <!-- Placeholder imagem -->
-        <img src="https://via.placeholder.com/400x300" alt="Minerva"
-             class="absolute inset-0 w-full h-full object-cover opacity-20">
-        <div class="relative z-10">
+        <!-- Pontos -->
+        <div class="bg-[#B5CA8A] rounded-2xl p-6 shadow-lg flex flex-col justify-end aspect-square sm:aspect-[4/3]">
+          <p class="text-lg sm:text-xl font-bold text-[#6A9850]">Veja seus</p>
+          <h2 class="text-3xl sm:text-5xl font-bold text-[#6A9850]">Pontos</h2>
+        </div>
+
+        <!-- Sobre o Minerva -->
+        <div class="bg-[#C8A9E0] rounded-2xl p-6 shadow-lg flex flex-col justify-end aspect-square sm:aspect-[4/3]">
           <p class="text-lg sm:text-xl font-bold text-[#9A5CAD]">Sobre o</p>
           <h2 class="text-3xl sm:text-5xl font-bold text-[#9A5CAD]">Minerva</h2>
         </div>
+
+        <!-- Trilha -->
+        <div class="bg-[#6A9850] text-white rounded-2xl p-6 shadow-lg flex flex-col justify-end aspect-square sm:aspect-[4/3]">
+          <p class="text-lg sm:text-xl font-bold text-[#B5CA8A]">Explore sua</p>
+          <h2 class="text-3xl sm:text-5xl font-bold text-[#B5CA8A]">Trilha</h2>
+        </div>
+
       </div>
-    </a>
-  </div>
-
-  <!-- Coluna da direita -->
-  <a href="/src/profile/index.html" class="no-underline">
-    <div class="bg-[#B5CA8A] rounded-2xl p-6 shadow-lg flex flex-col justify-end 
-                h-[250px] sm:h-[300px] md:h-[75%] md:min-h-[775px]
-                transition hover:shadow-xl hover:-translate-y-1 relative overflow-hidden">
-      <!-- Placeholder imagem -->
-      <img src="https://via.placeholder.com/400x600" alt="Pontos"
-           class="absolute inset-0 w-full h-full object-cover opacity-20">
-      <div class="relative z-10">
-        <p class="text-lg sm:text-xl font-bold text-[#6A9850]">Veja seus</p>
-        <h2 class="text-3xl sm:text-5xl font-bold text-[#6A9850]">Pontos</h2>
-      </div>
-    </div>
-  </a>
-
-</div>
-
     </main>
 
 
     <!-- Ícones -->
     <script src="https://unpkg.com/phosphor-icons"></script>
-    <script src="/public/js/main.js"></script>
+    <script type="module" src="/public/js/main.js"></script>
     <script type="module" src="/public/js/functions/dashboard.js"></script>
   </body>
 </html>

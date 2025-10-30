@@ -1,13 +1,11 @@
 
-import { createClient } from "https://esm.sh/@supabase/supabase-js";
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from '/public/js/configs/config.js';
+import { supabase } from "/public/js/configs/config.js";
 import { loadSidebar } from "/public/js/utils/loadPartial.js";
 
 loadSidebar(); // Carrega o partial
 
 
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 async function loadUserData() {
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
@@ -39,6 +37,9 @@ async function loadUserData() {
         alert("Não foi possível carregar seu perfil.");
         return;
     }
+console.log("Sessão atual:", session);
+console.log("Usuário:", user);
+console.log("Perfil:", profile);
 
     
     if (profile) {
