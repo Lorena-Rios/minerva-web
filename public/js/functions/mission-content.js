@@ -104,26 +104,24 @@ function renderTemas() {
     temasGrid.innerHTML = ""; // Limpa a grade
     let completedCount = 0;
 
+    // Loop para renderizar os cards de TEMA (igual ao que você já tinha)
     currentTemas.forEach(tema => {
         const isCompleted = userProgress.includes(tema.id);
         if (isCompleted) completedCount++;
 
         const card = document.createElement('button');
-        card.type = "button"; // Boa prática para botões
+        card.type = "button";
         card.className = "bg-white rounded-2xl p-8 shadow-lg h-56 lg:h-64 flex items-center justify-start text-left transition hover:shadow-xl hover:-translate-y-1 relative";
         
-        // Armazena os dados do tema no próprio elemento!
         card.dataset.temaId = tema.id;
         card.dataset.nome = tema.nome;
-        card.dataset.conteudo = tema.conteudo; // O HTML do conteúdo
+        card.dataset.conteudo = tema.conteudo; 
         
-        card.onclick = () => openTemaModal(card); // Chama a função de abrir o modal
+        card.onclick = () => openTemaModal(card); 
 
         card.innerHTML = `
             <h2 class="text-3xl font-bold text-[#9A5CAD] flex items-center gap-4">
-                
                 ${tema.nome}
-
                 ${isCompleted ? `
                     <div class="text-white bg-[#6A9850] rounded-full p-2 text-lg flex items-center justify-center">
                         <i class="ph-check"></i>
@@ -134,9 +132,61 @@ function renderTemas() {
         temasGrid.appendChild(card);
     });
 
+    // ATUALIZA O CONTADOR DE PROGRESSO (igual ao que você já tinha)
+    document.getElementById('modulo-progresso').textContent = `${completedCount}/${currentTemas.length} Missões Concluídas`;
+    
+    // 1. Verifica se tudo foi concluído
+    const allComplete = (completedCount === currentTemas.length && currentTemas.length > 0);
+    
+    // 2. Pega o moduloId da URL para construir o link do quiz
+    const urlParams = new URLSearchParams(window.location.search);
+    const moduloId = urlParams.get('modulo');
+
+    // 3. Cria o elemento do botão (usamos <a> para ser um link)
+    const challengeCard = document.createElement('a');
+    
+    // Faz o card ocupar a largura total no grid
+    challengeCard.className = "col-span-1 lg:col-span-2 rounded-2xl p-8 shadow-lg h-56 lg:h-64 flex flex-col items-center justify-center text-center transition relative";
+
+if (allComplete) {
+        // ESTADO DESBLOQUEADO (Verde)
+        challengeCard.href = `/src/quiz/index.html?modulo=${moduloId}`; // Link para o quiz
+        challengeCard.className += " bg-[#6A9850] text-white hover:shadow-xl hover:-translate-y-1";
+        
+        // NOVO HTML (Ícone de coroa e texto)
+        challengeCard.innerHTML = `
+            <img src="/public/icon/crown.png" class="h-10" alt="Coroa">
+            
+            <h2 class="text-2xl font-bold text-white mt-4">
+                Desafio Final
+            </h2>
+        `;
+    } else {
+        // ESTADO BLOQUEADO (Cinza)
+        challengeCard.href = "#"; // Não leva a lugar nenhum
+        challengeCard.onclick = (e) => e.preventDefault(); // Impede o clique
+        challengeCard.className += " bg-gray-200 text-gray-400 cursor-not-allowed";
+        
+        // NOVO HTML (Ícone de coroa cinza)
+        challengeCard.innerHTML = `
+            <img src="/public/icon/crown.png" class="h-10" alt="Coroa">
+
+            <h2 class="text-3xl font-bold text-[#9A5CAD] flex items-center gap-4">
+                Desafio Final
+            </h2>
+        `;
+    }
+
+    // 6. Adiciona o botão de desafio ao final da grade
+    temasGrid.appendChild(challengeCard);
+
+
     // ATUALIZA O CONTADOR DE PROGRESSO
     document.getElementById('modulo-progresso').textContent = `${completedCount}/${currentTemas.length} Missões Concluídas`;
-}
+};
+
+
+
 
 //FUNÇÕES DO MODAL
 window.openTemaModal = function(cardElement) {

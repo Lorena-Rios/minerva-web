@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Minerva - Dashboard</title>
+        <title>Minerva - Perfil</title>
         <link rel="icon" href="/public/images/logo.png" type="image">
         <link rel="stylesheet" href="/public/css/input.css" />
         <link href="/public/css/dist/output.css" rel="stylesheet">
@@ -25,7 +25,7 @@
             <img src="/public/icon/level-icon.png" alt="ícone nivel" class="w-8 h-8">
             <div>
                 <p class="text-[#6A9850] font-bold">Nível</p>
-                <p class="text-gray-600 text-sm">1</p>
+                <p id="profile-nivel" class="text-gray-600 text-sm"></p>
             </div>
             </div>
 
@@ -34,14 +34,14 @@
             <img src="/public/icon/xp-icon.png" alt="ícone XP" class="w-8 h-8">
             <div>
                 <p class="text-[#9A5CAD] font-bold">Pontos</p>
-                <p class="text-gray-600 text-sm">100</p>
+                <p id="profile-pontos"class="text-gray-600 text-sm"></p>
             </div>
             </div>
 
             <!-- Barra de progresso -->
             <div class="bg-[#9A5CAD] rounded-full h-10 p-3">
                 <div class="w-full bg-[#E6DCC3] rounded-full h-4">
-                    <div class="bg-[#6A9850] h-4 rounded-full w-[60%] transition-all duration-300"></div>
+                    <div id="profile-progress-bar" class="bg-[#6A9850] h-4 rounded-full w-0 transition-all duration-300"></div>
                 </div>
             </div>
         </div>
@@ -51,16 +51,15 @@
             <div class="w-24 h-24 rounded-full border-[5px] border-[#9A5CAD] flex items-center justify-center bg-[#E5D8ED]">
             <img src="/public/images/profile_picture.png" alt="Foto de perfil" class="rounded-full">
             </div>
-            <p class="text-[#4E3B53] font-medium mt-2">Lorena Rios</p>
+            <p id="profile-nome" class="text-[#4E3B53] font-medium mt-2">Lorena Rios</p>
             <button class="text-[#9A5CAD] text-sm flex items-center gap-1 hover:text-[#7c4897]">
-            <i class="ph-pencil-simple text-xs"></i> Editar
             </button>
         </div>
         </div>
 
         <!-- Ícones -->
         <script src="https://unpkg.com/phosphor-icons"></script>
-        <script src="/public/js/main.js"></script>
+        <script type="module" src="/public/js/main.js"></script>
         <script type="module" src="/public/js/functions/profile.js"></script>
     </body>
 </html>

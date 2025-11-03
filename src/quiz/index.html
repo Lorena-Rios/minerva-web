@@ -9,99 +9,70 @@
         <link href="/public/css/dist/output.css" rel="stylesheet">
      </head>
 
-     <body class="bg-[#F6F7F1] min-h-screen flex">
-      <!-- sidebar-container -->
-      <div id="sidebar-container"></div>
+<body class="bg-[#F6F7F1] min-h-screen flex">
+    <div id="sidebar-container"></div>
 
-      <main
-      id="main-content"
-      class="flex-1 p-6 lg:p-10 relative transition-all duration-300 ease-in-out 
-             bg-[#9A5CAD] flex items-center justify-center"
+  <main
+  id="main-content"
+  class="flex-1 p-6 lg:p-10 relative transition-all duration-300 ease-in-out 
+      g-[#9A5CAD] flex items-center justify-center"
     >
-      <div class="bg-white rounded-3xl shadow-xl p-8 lg:p-12 max-w-2xl w-full flex flex-col items-center">
+    <div class="bg-white rounded-3xl shadow-xl p-8 lg:p-12 max-w-2xl w-full flex flex-col items-center">
 
-        <p class="text-lg font-bold text-[#6A9850]">Questão 1/5</p>
+            <p id="quiz-counter" class="text-lg font-bold text-[#6A9850]">Questão ...</p>
 
-        <h1 class="text-3xl font-bold text-gray-800 mt-4 text-[#4E3B53]">Sobre Algoritmos</h1>
+            <h1 id="quiz-title" class="text-3xl font-bold text-gray-800 mt-4 text-[#4E3B53]">Carregando Quiz...</h1>
 
-        <p class="text-xl text-gray-600 mt-2 text-center text-[#515050]">
-          Qual das opções não é característica de um bom algoritmo?
-        </p>
+            <p id="pergunta-descricao" class="text-xl text-gray-600 mt-2 text-center text-[#515050]">
+      Carregando pergunta...
+    </p>
 
-        <div class="space-y-4 w-full mt-8">
-          
-          <button class="w-full text-left border border-gray-300 rounded-xl p-4 transition duration-300 
-                         hover:bg-gray-100 hover:border-[#9A5CAD] 
-                         focus:outline-none focus:ring-2 focus:ring-[#9A5CAD] focus:bg-purple-50">
-            <span class="font-bold mr-2 text-[#9A5CAD]">a)</span> 
-            <span class="text-gray-700">Clareza</span>
-          </button>
-
-          <button class="w-full text-left border border-gray-300 rounded-xl p-4 transition duration-300 
-                         hover:bg-gray-100 hover:border-[#9A5CAD] 
-                         focus:outline-none focus:ring-2 focus:ring-[#9A5CAD] focus:bg-purple-50">
-            <span class="font-bold mr-2 text-[#9A5CAD]">b)</span> 
-            <span class="text-gray-700">Ambiguidade</span>
-          </button>
-
-          <button class="w-full text-left border border-gray-300 rounded-xl p-4 transition duration-300 
-                         hover:bg-gray-100 hover:border-[#9A5CAD] 
-                         focus:outline-none focus:ring-2 focus:ring-[#9A5CAD] focus:bg-purple-50">
-            <span class="font-bold mr-2 text-[#9A5CAD]">c)</span> 
-            <span class="text-gray-700">Finitude</span>
-          </button>
-
-          <button class="w-full text-left border border-gray-300 rounded-xl p-4 transition duration-300 
-                         hover:bg-gray-100 hover:border-[#9A5CAD] 
-                         focus:outline-none focus:ring-2 focus:ring-[#9A5CAD] focus:bg-purple-50">
-            <span class="font-bold mr-2 text-[#9A5CAD]">d)</span> 
-            <span class="text-gray-700">Eficiência</span>
-          </button>
-        </div>
-
-        <a href="#" class="text-sm text-gray-500 hover:underline mt-4">
-          Mostrar respostas
-        </a>
-
-        <button class="w-full bg-[#6A9850] text-white font-bold text-lg py-4 rounded-xl mt-6 transition hover:bg-opacity-80"
-        onclick="event.preventDefault(); openModal()">
-          RESPONDER
-        </button>
-
+            <div id="alternativas-container" class="space-y-4 w-full mt-8">
       </div>
 
-      <div 
-  id="modal" 
-  class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-  onclick="closeModal()"
->
-  <div 
-    class="bg-white rounded-3xl shadow-xl p-8 lg:p-12 max-w-md w-full flex flex-col items-center"
-    onclick="event.stopPropagation()"
-  >
-    
-    <h2 class="text-4xl font-bold text-[#6A9850]">Parabéns!</h2>
+            <a href="#" id="reveal-answer-btn" class="text-sm text-gray-500 hover:underline mt-4 hidden">
+      </a>
 
-    <div class="my-6 flex items-center justify-center">
-        <img src="/public/images/trophy.png" alt="Troféu" class="w-[40%] h-[40%]" />
-    </div>
-    <p class="text-2xl font-bold text-[#4E3B53] mt-2">+1 etapa concluída</p>
-
-    <a href="/src/mission-page/mission-content/index.html"  >
-    <button 
-      onclick="closeModal()"
-      class="w-full bg-[#9A5CAD] text-white font-bold text-lg py-3 px-6 rounded-xl mt-8 
-             transition hover:bg-opacity-80"
-    >
-      Prosseguir
+            <button 
+          id="main-action-btn"
+          class="w-full bg-[#6A9850] text-white font-bold text-lg py-4 rounded-xl mt-6 transition hover:bg-opacity-80
+                 disabled:bg-gray-400 disabled:cursor-not-allowed"
+          disabled
+        >
+      RESPONDER
     </button>
-    </a>
-  </div>
-</div>
 
-        </>
-        <script src="https://unpkg.com/phosphor-icons"></script>
-        <script src="/public/js/main.js"></script>
-        <script type="module" src="/public/js/functions/quiz.js"></script>
-     </body>
+  </div>
+    </main>
+
+    <div 
+      id="modal" 
+      class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+      onclick="closeModal()"
+    >
+      <div 
+        class="bg-white rounded-3xl shadow-xl p-8 lg:p-12 max-w-md w-full flex flex-col items-center"
+        onclick="event.stopPropagation()"
+      >
+        <h2 class="text-4xl font-bold text-[#6A9850]">Parabéns!</h2>
+        <div class="my-6 flex items-center justify-center">
+        <img src="/public/images/trophy.png" alt="Troféu" class="w-[40%] h-[40%]" />
+        </div>
+        <p class="text-2xl font-bold text-[#4E3B53] mt-2">+1 etapa concluída</p>
+        <a id="modal-prosseguir-link" href="#" class="w-full">
+            <button 
+              class="w-full bg-[#9A5CAD] text-white font-bold text-lg py-3 px-6 rounded-xl mt-8 
+                    transition hover:bg-opacity-80"
+            >
+              Prosseguir
+            </button>
+        </a>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <script type="module" src="/public/js/main.js"></script>
+    <script type="module" src="/public/js/functions/quiz.js"></script>
+  </body>
+</html>
 </html>
