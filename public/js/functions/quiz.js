@@ -13,6 +13,8 @@ let perguntas = [];
 let currentQuestionIndex = 0; 
 let selectedAlternativaId = null; 
 let isAnswered = false; 
+let initialUserPoints = 0;
+let finalUserPoints = 0; 
 
 // --- 2. ELEMENTOS DO DOM (para não repetir getElementById) ---
 let quizCounterEl, quizTitleEl, perguntaDescricaoEl, alternativasContainerEl, mainActionBtnEl;
@@ -181,8 +183,12 @@ async function handleSubmitAnswer() {
         return;
     }
 
-    // 2. Revela as respostas (lógica de highlight)
+    // Sua função 'grade_answer' retorna o *novo total* de pontos do usuário.
+    finalUserPoints = gradeData.pontos;
+
+    // Revela as respostas (lógica de highlight)
     const isCorreta = gradeData.is_correta;
+
     
     Array.from(alternativasContainerEl.children).forEach(btn => {
         const isSelected = (btn.dataset.id === selectedAlternativaId);
@@ -194,11 +200,13 @@ async function handleSubmitAnswer() {
         btn.classList.remove('ring-2', 'ring-[#9A5CAD]', 'bg-purple-50', 'hover:bg-gray-100');
 
         if (isCorrectAnswer) {
-            // Destaca a resposta CORRETA (Verde)
-            btn.classList.add('bg-green-100', 'border-green-400');
+             // Destaca a resposta CORRETA (Verde)
+             btn.style.backgroundColor = '#DCFCE7'; // bg-green-100
+             btn.style.borderColor = '#4ADE80';     // border-green-400
         } else if (isSelected && !isCorrectAnswer) {
-            // Destaca a resposta ERRADA que o usuário escolheu (Vermelho)
-            btn.classList.add('bg-red-100', 'border-red-400');
+             // Destaca a resposta ERRADA que o usuário escolheu (Vermelho)
+             btn.style.backgroundColor = '#FEE2E2'; // bg-red-100
+             btn.style.borderColor = '#F87171';     // border-red-400
         }
     });
 
@@ -221,9 +229,11 @@ function handleNextQuestion() {
     renderQuestion(); // Renderiza a nova pergunta
 }
 
-// --- 7. FUNÇÕES DO MODAL ---
+// --- FUNÇÕES DO MODAL ---
 function showFinalModal() {
     const prosseguirLink = document.getElementById('modal-prosseguir-link');
+
+    const feedbackText = document.getElementById('modal-feedback-text');
 
     // 'moduloId' é a variável global que pegamos no início do script
     if (prosseguirLink && moduloId) {
@@ -231,11 +241,23 @@ function showFinalModal() {
         prosseguirLink.href = `/src/mission-page/mission-content/index.html?modulo=${moduloId}`;
     } else {
         console.error("Não foi possível definir o link 'Prosseguir': moduloId ou elemento não encontrado.");
-        // Link de fallback para o dashboard se algo der errado
         prosseguirLink.href = '/src/dashboard/index.html'; 
     }
     
-    openModal(); // Agora sim, abre o modal "Parabéns"
+
+    if (feedbackText) {
+        const pointsEarned = finalUserPoints - initialUserPoints;
+        
+        if (pointsEarned > 0) {
+            feedbackText.textContent = `+${pointsEarned} pontos!`;
+        } else if (pointsEarned < 0) {
+            feedbackText.textContent = `${pointsEarned} pontos. (Você mudou uma resposta)`;
+        } else {
+            feedbackText.textContent = "Etapa concluída!"; // Se não ganhou/perdeu pontos
+        }
+    }
+
+    openModal(); // Abre o modal "Parabéns"
 }
 
 function openModal() {
@@ -244,9 +266,9 @@ function openModal() {
 }
 
 function closeModal() {
-    const modal = document.getElementById('modal');
+    const modal = document.getElementById('modal');
     if (modal) modal.classList.add('hidden');
 }
 
-// --- 8. INICIA A PÁGINA ---
+// --- INICIA A PÁGINA ---
 initializePage();
