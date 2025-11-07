@@ -202,7 +202,8 @@ window.openTemaModal = function(cardElement) {
 
     // Preenche o modal
     modalTitle.textContent = nome;
-    modalBody.innerHTML = conteudo; // innerHTML renderiza o HTML do seu banco
+    modalBody.innerHTML = marked.parse(conteudo); // innerHTML renderiza o HTML do seu banco
+    modalBody.classList.add('text-left', 'leading-relaxed');
     prosseguirBtn.dataset.temaId = temaId; // Passa o ID para o botão "Prosseguir"
 
     modal.classList.remove('hidden');
