@@ -5,9 +5,9 @@ config.js
 node_modules/
 
 # Diretórios de build/compilação
-dist/
-build/
-coverage/
+# dist/
+# build/
+# coverage/
 
 # Variáveis de ambiente
 .env
