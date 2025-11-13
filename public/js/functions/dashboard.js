@@ -1,6 +1,9 @@
 
 import { supabase } from "/public/js/configs/config.js";
 import { loadSidebar } from "/public/js/utils/loadPartial.js";
+import { toggleSidebar } from "/public/js/main.js"
+
+window.toggleSidebar = toggleSidebar; // Garante acesso global
 
 loadSidebar(); // Carrega o partial
 

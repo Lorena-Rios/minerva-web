@@ -15,11 +15,10 @@ async function initializePage() {
 
     await Promise.all([
         loadSidebar(),
-        loadModalTema()   
+        loadModalTema()
     ]);
 
-    // Torna as funções globais acessíveis para o HTML (onclick)
-    window.toggleSidebar = toggleSidebar;
+    
     window.closeModal = closeModal;
     window.handleProsseguirClick = handleProsseguirClick;
 

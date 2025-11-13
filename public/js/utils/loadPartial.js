@@ -15,20 +15,6 @@ export async function loadSidebar() {
 }
 
 
-// Função para carregar o conteúdo parcial do mission card
-export async function loadMissionCard() {
-  const container = document.getElementById("mission-card-container");
-  if (!container) return;
-
-  try {
-    const response = await fetch("/src/partials/missionCard.html");
-    const html = await response.text();
-    container.innerHTML = html;
-  } catch (err) {
-    console.error("Erro ao carregar mission card:", err);
-  }
-}
-
 // Função para carregar o conteúdo parcial do modal tema
 export async function loadModalTema() {
   const container = document.getElementById("modal-tema");
