@@ -2,8 +2,9 @@
 module.exports = {
   content: [
     "./js/**/*.js",
-    "./src/**/*.{html,js}",
-    "./*.html"            // ou ajuste conforme sua estrutura
+    "./src/**/*.{html,js}",   // Garanta que seus caminhos estão corretos
+    "./public/**/*.{html,js}", // Talvez você precise adicionar este
+    "./*.html"
   ],
 
   safelist: [

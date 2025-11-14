@@ -62,3 +62,21 @@ window.closeModal = function() {
         modal.classList.add('hidden');
     }
 }
+
+
+
+function togglePasswordVisibility() {
+  const passwordInput = document.getElementById('password');
+  const toggleIcon = document.getElementById('password-toggle-icon');
+  
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    toggleIcon.classList.remove('ph-eye');
+    toggleIcon.classList.add('ph-eye-slash');
+  } else {
+    passwordInput.type = 'password';
+    toggleIcon.classList.remove('ph-eye-slash');
+    toggleIcon.classList.add('ph-eye');
+  }
+}
+window.togglePasswordVisibility = togglePasswordVisibility;

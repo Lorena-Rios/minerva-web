@@ -15,20 +15,24 @@ async function handleSignUp() {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
     const passwordConfirm = document.getElementById("confirm-password").value;
+    const cargo = document.getElementById('cargo').value;
+
     
 
     if (!users) {
         alert("Por favor, preencha o nome.");
         return;
     }
-
     if (!email) {
         alert("Por favor, preencha o email.");
         return;
     }
-
     if (!password) {
         alert("Por favor, preencha a senha.");
+        return;
+    }
+    if (!cargo) {
+        alert("Por favor, selecione o cargo.");
         return;
     }
 
@@ -46,7 +50,8 @@ async function handleSignUp() {
         password,
         options: { 
             data: { 
-                display_name: users // Armazena o nome no metadata do usuário
+                display_name: users, // Armazena o nome no metadata do usuário
+                cargo: cargo // Armazena o cargo no metadata do usuário
             }
         }
     });

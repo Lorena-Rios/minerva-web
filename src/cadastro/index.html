@@ -38,50 +38,57 @@
             <form class="space-y-4" onsubmit="event.preventDefault(); handleSignUp();">
                 <!-- Email -->
                 <div>
-                <label class="text-sm font-medium text-[#8C539D]">Email*</label>
-                <input
-                    id="email"
-                    type="email"
-                    placeholder="Digite seu Email"
-                    class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
-                        focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
-                />
-                </div>
+                    <label class="text-sm font-medium text-[#8C539D]">Email*</label>
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="Digite seu Email"
+                        class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
+                            focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
+                    />
+                    </div>
 
-                <!-- Usuário -->
+                    <!-- Usuário -->
+                    <div>
+                    <label class="text-sm font-medium text-[#8C539D]">Usuário*</label>
+                    <input
+                        id="users"
+                        type="text"
+                        placeholder="Usuário"
+                        class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
+                            focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
+                    />
+                    </div>
+
+                    <!-- Senhas -->
+                    <div class="flex gap-4">
+                    <div class="w-1/2">
+                        <label class="text-sm font-medium text-[#8C539D]">Criar Senha</label>
+                        <input
+                        id="password"
+                        type="password"
+                        placeholder="Senha"
+                        class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
+                                focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
+                        />
+                    </div>
+                    <div class="w-1/2">
+                        <label class="text-sm font-medium text-[#8C539D]">Repetir Senha</label>
+                        <input
+                        id="confirm-password"
+                        type="password"
+                        placeholder="Senha"
+                        class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
+                                focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
+                        />
+                    </div>
+                </div>
                 <div>
-                <label class="text-sm font-medium text-[#8C539D]">Usuário*</label>
-                <input
-                    id="users"
-                    type="text"
-                    placeholder="Usuário"
-                    class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
-                        focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
-                />
-                </div>
-
-                <!-- Senhas -->
-                <div class="flex gap-4">
-                <div class="w-1/2">
-                    <label class="text-sm font-medium text-[#8C539D]">Criar Senha</label>
-                    <input
-                    id="password"
-                    type="password"
-                    placeholder="Senha"
-                    class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
-                            focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
-                    />
-                </div>
-                <div class="w-1/2">
-                    <label class="text-sm font-medium text-[#8C539D]">Repetir Senha</label>
-                    <input
-                    id="confirm-password"
-                    type="password"
-                    placeholder="Senha"
-                    class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
-                            focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
-                    />
-                </div>
+                    <label for="cargo" class="block text-sm font-medium text-gray-700">Cargo*</label>
+                    <select id="cargo" class="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#9A5CAD] shadow-md">
+                        <option value="Aluno">Aluno</option>
+                        <option value="Professor">Professor</option>
+                    </select>
                 </div>
 
                 <!-- Botão -->

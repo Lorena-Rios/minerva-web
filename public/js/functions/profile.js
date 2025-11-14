@@ -14,6 +14,7 @@ async function loadProfileData() {
     const nivelEl = document.getElementById('profile-nivel');
     const pontosEl = document.getElementById('profile-pontos');
     const progressBarEl = document.getElementById('profile-progress-bar');
+    const profileRole = document.getElementById('profile-role');
 
     // Pega o usuário logado
     const { data: { user }, error: userError } = await supabase.auth.getUser();
@@ -30,7 +31,7 @@ async function loadProfileData() {
     // Busca os dados do 'user_profile' no Supabase
     const { data: profile, error: profileError } = await supabase
         .from('user_profile')
-        .select('nome, nivel, pontos') // Pega os 3 campos
+        .select('nome, nivel, pontos, cargo') // Pega os 4 campos
         .eq('id', user.id)
         .single(); // Espera apenas um resultado
 
@@ -45,6 +46,8 @@ async function loadProfileData() {
         nomeEl.textContent = profile.nome || 'Usuário';
         nivelEl.textContent = profile.nivel || 0;
         pontosEl.textContent = profile.pontos || 0;
+        profileRole.textContent = profile.cargo || 'Aluno';
+
 
         // Calcula e preenche a barra de progresso
         const pontosAtuais = parseInt(profile.pontos) || 0;
@@ -56,7 +59,23 @@ async function loadProfileData() {
         const progressoPercent = (pontosNesteNivel / PONTOS_POR_NIVEL) * 100;
 
         progressBarEl.style.width = `${progressoPercent}%`;
+
+
+    if (profile.cargo === 'Professor') {
+        const actions = document.getElementById('profile-actions');
+
+        const btnModulo = document.createElement('button');
+        btnModulo.textContent = 'Adicionar Módulo';
+        btnModulo.classList.add(
+            'bg-[#9A5CAD]', 'text-white', 'font-medium',
+            'rounded-xl', 'px-6', 'py-3', 'w-full', 'shadow-md',
+            'hover:bg-[#8445a0]', 'transition',
+        );
+        btnModulo.onclick = () => window.location.href = '/src/profile/criar-modulo/index.html';
+
+        actions.appendChild(btnModulo);
     }
+}
 }
 
 /**
@@ -67,6 +86,8 @@ function initializePage() {
     window.toggleSidebar = toggleSidebar; // Torna o toggle global
     loadProfileData(); // Carrega os dados do perfil
 }
+
+
 
 // Roda a inicialização
 initializePage();

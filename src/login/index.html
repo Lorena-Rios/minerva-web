@@ -7,6 +7,7 @@
     <link rel="icon" href="/public/images/logo.png" type="image">
     <link rel="stylesheet" href="/public/css/input.css" />
     <link href="/public/css/dist/output.css" rel="stylesheet">
+    <script src="https://unpkg.com/phosphor-icons"></script>
 
 
   </head>
@@ -49,7 +50,7 @@
             </div>
 
             <!-- Inputs -->
-            <form class="flex flex-col gap-4" onsubmit="event.preventDefault(); handleLogin();">
+            <form class="flex flex-col space-y-4" onsubmit="event.preventDefault(); handleLogin();">
             <div>
                 <input 
                 id="email"
@@ -58,14 +59,16 @@
                 class="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#9A5CAD] shadow-md" />
             </div>
 
-            <div>
+            <div class="relative w-full" style="position: relative;">
                 <input 
                 id="password"
                 type="password" 
                 placeholder="Senha"
-                class="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#9A5CAD] shadow-md" />
-                <!-- <a href="#" class="text-sm text-[#9A5CAD] hover:text-[#C8A9E0] float-right mt-1">Esqueceu sua senha?</a> -->
+                class="w-full px-4 py-3 pr-14 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#9A5CAD] shadow-md" 
+                />
+
             </div>
+
 
             <!-- Botão -->
             <button 
@@ -83,7 +86,7 @@
             </p>
         </div>
         </div>
-        <script src="/public/js/main.js"></script>
+        <script type="module" src="/public/js/main.js"></script>
         <script type="module" src="/public/js/functions/signIn.js"></script>
     </body>
 </html>
