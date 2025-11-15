@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Minerva - Meus Módulos</title>
+        <link rel="icon" href="/public/images/logo.png" type="image">
+        <link rel="stylesheet" href="/public/css/input.css" />
+        <link href="/public/css/dist/output.css" rel="stylesheet">
+    </head>
+
+    <body class="min-h-screen flex bg-gray-100">
+        <div id="sidebar-container"></div>
+
+        <main class="flex-1 p-10 md:p-10 ">
+            <h1 class="text-3xl font-bold text-[#9A5CAD] mb-6">Meus Módulos Criados</h1>
+
+            <div id="modulos-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div id="loading-modulos" class="text-center text-gray-500 col-span-full">
+                    Carregando módulos...
+                </div>
+            </div>
+        </main>
+
+        <script src="https://unpkg.com/phosphor-icons"></script>
+        <script type="module" src="/public/js/main.js"></script>
+        <script type="module" src="/public/js/functions/meus-modulos.js"></script>
+    </body>
+</html>

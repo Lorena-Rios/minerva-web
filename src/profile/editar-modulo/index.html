@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Minerva - Editar Módulo</title>
+        <link rel="icon" href="/public/images/logo.png" type="image">
+        <link rel="stylesheet" href="/public/css/input.css" />
+        <link href="/public/css/dist/output.css" rel="stylesheet">
+    </head>
+
+    <body class="min-h-screen flex bg-gray-100">
+        <!-- sidebar-container -->
+        <div id="sidebar-container"></div>
+
+        <!-- Conteúdo Principal -->
+        <main class="flex-1 p-6 md:p-10 md:ml-64">
+            <h1 class="text-3xl font-bold text-[#9A5CAD] mb-6">Editar Módulo</h1>
+
+            <!-- Indicador de Carregamento -->
+            <div id="loading-indicator" class="text-center p-10">
+                <p class="text-lg text-gray-600">Carregando dados do módulo...</p>
+            </div>
+
+            <!-- Formulário de Edição (inicialmente oculto) -->
+            <form id="form-editar-modulo" class="space-y-6 hidden">
+                
+                <!-- ID do Módulo (oculto) -->
+                <input type="hidden" id="modulo-id">
+
+                <!-- Detalhes do Módulo -->
+                <fieldset class="border p-4 rounded-lg bg-white shadow">
+                    <legend class="text-xl font-semibold text-[#81A86B] px-2">1. Detalhes do Módulo</legend>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="modulo-nome" class="block text-sm font-medium text-gray-700">Nome do Módulo</label>
+                            <input type="text" id="modulo-nome" name="modulo-nome" required class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-[#9A5CAD] focus:border-[#9A5CAD]">
+                        </div>
+                        <div>
+                            <label for="modulo-level" class="block text-sm font-medium text-gray-700">Nível Requerido</label>
+                            <input type="number" id="modulo-level" name="modulo-level" value="1" min="1" required class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-[#9A5CAD] focus:border-[#9A5CAD]">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Temas do Módulo -->
+                <fieldset class="border p-4 rounded-lg bg-white shadow">
+                    <legend class="text-xl font-semibold text-[#81A86B] px-2">2. Temas (Conteúdo)</legend>
+                    <div id="temas-container" class="space-y-4">
+                        <!-- Temas serão preenchidos pelo JS -->
+                    </div>
+                    <button type="button" id="btn-add-tema" class="mt-4 bg-[#9A5CAD] text-white font-semibold py-2 px-4 rounded-xl hover:bg-opacity-80 transition">
+                        + Adicionar Tema
+                    </button>
+                </fieldset>
+
+                <!-- Quiz do Módulo -->
+                <fieldset class="border p-4 rounded-lg bg-white shadow">
+                    <legend class="text-xl font-semibold text-[#81A86B] px-2">3. Quiz</legend>
+                    
+                    <div>
+                        <label for="quiz-titulo" class="block text-sm font-medium text-gray-700">Título do Quiz</label>
+                        <input type="text" id="quiz-titulo" name="quiz-titulo" required class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-[#9A5CAD] focus:border-[#9A5CAD]">
+                    </div>
+
+                    <div id="perguntas-container" class="space-y-6 mt-6">
+                        <!-- Perguntas serão preenchidas pelo JS -->
+                    </div>
+                    <button type="button" id="btn-add-pergunta" class="mt-4 bg-[#9A5CAD] text-white font-semibold py-2 px-4 rounded-xl hover:bg-opacity-80 transition">
+                        + Adicionar Pergunta (Requerido: 5)
+                    </button>
+                </fieldset>
+
+                <!-- Ações -->
+                <fieldset class="border p-4 rounded-lg bg-white shadow">
+                    <legend class="text-xl font-semibold text-red-600 px-2">Ações</legend>
+                    
+                    <div class="flex flex-col md:flex-row gap-4 w-full min-w-0">
+                         <!-- Botão de Salvar -->
+                        <button type="submit" class="w-full md:w-1/2 min-w-0 bg-[#81A86B] hover:bg-[#B5CA8A] text-white font-bold py-3 shadow-md rounded-xl hover:shadow-lg transition">
+                            Salvar Alterações
+                        </button>
+
+                        <!-- Botão de Excluir -->
+                        <button type="button" id="btn-excluir" class="relative bg-[#b8324a] z-10 w-full md:w-1/2 min-w-0 font-bold py-3 shadow-md rounded-xl hover:shadow-lg transition">
+                            Excluir Módulo
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </main>
+
+        <!-- Ícones -->
+        <script src="https://unpkg.com/phosphor-icons"></script>
+        <!-- Carrega o JS principal e o da página -->
+        <script type="module" src="/public/js/main.js"></script>
+        <script type="module" src="/public/js/functions/editar-modulo.js"></script>
+    </body>
+</html>

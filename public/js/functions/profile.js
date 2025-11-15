@@ -64,6 +64,7 @@ async function loadProfileData() {
     if (profile.cargo === 'Professor') {
         const actions = document.getElementById('profile-actions');
 
+        // --- Botão Adicionar Módulo  ---
         const btnModulo = document.createElement('button');
         btnModulo.textContent = 'Adicionar Módulo';
         btnModulo.classList.add(
@@ -74,6 +75,18 @@ async function loadProfileData() {
         btnModulo.onclick = () => window.location.href = '/src/profile/criar-modulo/index.html';
 
         actions.appendChild(btnModulo);
+
+        // --- BOTÃO Ver Meus Módulos  ---
+        const btnVerModulos = document.createElement('button');
+            btnVerModulos.textContent = 'Ver Meus Módulos';
+            btnVerModulos.classList.add(
+                'bg-[#81A86B]', 'text-white', 'font-medium', // Cor verde
+                'rounded-xl', 'px-6', 'py-3', 'w-full', 'shadow-md',
+                'hover:bg-[#B5CA8A]', 'transition', 'mt-4' // Adiciona margem no topo
+            );
+            btnVerModulos.onclick = () => window.location.href = '/src/profile/meus-modulos/index.html';
+            
+            actions.appendChild(btnVerModulos);
     }
 }
 }
