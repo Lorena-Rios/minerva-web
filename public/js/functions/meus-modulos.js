@@ -52,10 +52,10 @@ function renderizarModulos(modulos) {
     // 4. Verifica se não há módulos
     if (modulos.length === 0) {
         modulosContainer.innerHTML = `
-            <div class="col-span-full text-center p-8 bg-[#F8F8F8] rounded-lg shadow">
+            <div class="col-span-full text-center p-8 bg-white rounded-lg shadow">
                 <h3 class="font-semibold text-lg text-gray-700">Nenhum módulo encontrado</h3>
-                <p class="text-gray-500 mt-4 mb-4">Você ainda não criou nenhum módulo.</p>
-                <a href="/src/profile/criar-modulo/index.html" class="mt-16 inline-block bg-[#9A5CAD] text-white font-semibold py-2 px-4 rounded-xl hover:bg-opacity-80 transition">
+                <p class="text-gray-500">Você ainda não criou nenhum módulo.</p>
+                <a href="/src/profile/criar-modulo/index.html" class="mt-4 inline-block bg-[#9A5CAD] text-white font-semibold py-2 px-4 rounded-xl hover:bg-opacity-80 transition">
                     Criar meu primeiro módulo
                 </a>
             </div>

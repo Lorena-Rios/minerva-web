@@ -5,7 +5,6 @@ import { toggleSidebar } from "/public/js/main.js";
 loadSidebar(); // Carrega o partial
 window.toggleSidebar = toggleSidebar; // Garante acesso global
 
-// /public/js/functions/criar-modulo.js
 
 // --- Seletores do DOM ---
 const form = document.getElementById('form-criar-modulo');

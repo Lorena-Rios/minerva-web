@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minerva - Sobre Nós</title>
+    <link rel="icon" href="/public/images/logo.png" type="image">
+    <link rel="stylesheet" href="/public/css/input.css" />
+    <link href="/public/css/dist/output.css" rel="stylesheet">
+</head>
+
+    <body class="bg-[#C8A9E0] min-h-screen flex">
+    <!-- Sidebar -->
+    <div id="sidebar-container"></div>
+
+    <!-- Conteúdo principal -->
+    <main class="flex-1 p-8 md:p-16">
+        <div class="max-w-4xl mx-auto bg-white p-10 rounded-2xl shadow-xl">
+
+            <!-- Logo -->
+            <div class="flex justify-center mb-8">
+                <a href="/src/dashboard/index.html">
+                    <img src="/public/images/Minerva_logoGreen.png" alt="Logo Minerva" class="h-32">
+                </a>
+            </div>
+
+            <!-- Título -->
+            <h1 class="text-4xl font-bold text-center text-[#6A9850] mb-6">
+                Sobre o Projeto Minerva
+            </h1>
+
+            <!-- Texto -->
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                <strong>Minerva</strong> é uma proposta de aplicativo gamificado para o ensino de lógica de programação,
+                desenvolvido para os ingressantes do curso de Sistemas de Informação da UNEX.
+            </p>
+
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                O objetivo deste trabalho é oferecer uma ferramenta educacional que apoie e facilite o processo de aprendizagem
+                nas disciplinas de <strong>Introdução a Algoritmos</strong> e <strong>Estrutura de Dados</strong>.
+            </p>
+
+            <p class="text-lg leading-relaxed text-gray-700 mb-10">
+                Com essa proposta, buscamos criar um sistema de recompensas que valorize o esforço dos estudantes,
+                contextualizar os conteúdos com situações próximas de sua realidade e tornar mais leve e acessível
+                o primeiro contato com a programação.
+            </p>
+
+            <!-- Criadoras -->
+            <h2 class="text-3xl font-semibold text-[#6A9850] mb-6 text-center">
+                Criadoras do Projeto
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Criadora 1 -->
+                <div class="flex flex-col items-center bg-purple-100 p-6 rounded-xl shadow">
+                    <img src="/public/images/lorena.png" 
+                         class="rounded-lg mb-4 shadow-md" 
+                         alt="Lorena Rios">
+                    <p class="text-base font-semibold text-[#6A9850]">Lorena Rios</p>
+                </div>
+
+                <!-- Criadora 2 -->
+                <div class="flex flex-col items-center bg-purple-100 p-6 rounded-xl shadow">
+                    <img src="/public/images/bea.png" 
+                         class="rounded-lg mb-4 shadow-md" 
+                         alt="Ana Beatriz Sena">
+                    <p class="text-base font-semibold text-[#6A9850]">Ana Beatriz Sena</p>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <script type="module" src="/public/js/main.js"></script>
+    <script type="module" src="/public/js/functions/about.js"></script>
+</body>
+</html>
