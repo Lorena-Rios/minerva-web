@@ -69,7 +69,7 @@ async function handleSignUp() {
         // 3. Verifica se o perfil foi criado
         const { data: profile, error: checkError } = await supabase
             .from("user_profile")
-            .select("nome, nivel")
+            .select("nome, nivel, cargo")
             .eq("id", user.id)
             .single();
 
