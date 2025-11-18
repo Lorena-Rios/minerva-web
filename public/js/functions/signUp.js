@@ -80,7 +80,8 @@ async function handleSignUp() {
                 .insert([{ 
                     id: user.id, 
                     nome: users,
-                    nivel: 0  // Nível inicial 0
+                    nivel: 0,  // Nível inicial 0
+                    cargo: cargo
                 }]);
 
             if (profileError) {
