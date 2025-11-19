@@ -17,53 +17,82 @@ async function handleSignUp() {
     const passwordConfirm = document.getElementById("confirm-password").value;
     const cargo = document.getElementById('cargo').value;
 
-    
+    // Configuração padrão para erros (Vermelho Suave)
+    const errorStyle = {
+        background: "#C84A5B",
+        borderRadius: "8px"
+    };
 
+    // Validações Individuais
     if (!users) {
-        alert("Por favor, preencha o nome.");
+        Toastify({
+            text: "Por favor, preencha o nome.",
+            duration: 3000,
+            style: errorStyle
+        }).showToast();
         return;
     }
     if (!email) {
-        alert("Por favor, preencha o email.");
+        Toastify({
+            text: "Por favor, preencha o email.",
+            duration: 3000,
+            style: errorStyle
+        }).showToast();
         return;
     }
     if (!password) {
-        alert("Por favor, preencha a senha.");
+        Toastify({
+            text: "Por favor, preencha a senha.",
+            duration: 3000,
+            style: errorStyle
+        }).showToast();
         return;
     }
     if (!cargo) {
-        alert("Por favor, selecione o cargo.");
+        Toastify({
+            text: "Por favor, selecione o cargo.",
+            duration: 3000,
+            style: errorStyle
+        }).showToast();
         return;
     }
 
     // Verifica se as senhas são iguais
     if (password !== passwordConfirm) {
-        alert("As senhas não coincidem. Por favor, tente novamente.");
+        Toastify({
+            text: "As senhas não coincidem. Tente novamente.",
+            duration: 3000,
+            style: errorStyle
+        }).showToast();
         return;
     }
+
     console.log({ email, password, users });
 
     // 2. Tenta cadastrar o usuário no Auth (autenticação) do Supabase
-    // O resto da sua lógica permanece igual...
     const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: { 
             data: { 
-                display_name: users, // Armazena o nome no metadata do usuário
-                cargo: cargo // Armazena o cargo no metadata do usuário
+                display_name: users, // Armazena o nome no metadata
+                cargo: cargo         // Armazena o cargo no metadata
             }
         }
     });
 
     if (error) {
-        alert("Erro no Cadastro: " + error.message);
+        Toastify({
+            text: "Erro no Cadastro: " + error.message,
+            duration: 4000,
+            style: errorStyle
+        }).showToast();
         return;
     }
 
     const user = data.user;
     if (user) {
-        // Lógica de perfil...
+        // Aguarda um momento para o trigger do banco rodar (se houver)
         await new Promise(resolve => setTimeout(resolve, 1000));
 
         // 3. Verifica se o perfil foi criado
@@ -74,25 +103,47 @@ async function handleSignUp() {
             .single();
 
         if (checkError || !profile) {
-            // Se o trigger falhou ou demorou, cria o perfil manualmente
+            // Se o trigger falhou, tenta criar manualmente
             const { error: profileError } = await supabase
                 .from("user_profile")
                 .insert([{ 
                     id: user.id, 
                     nome: users,
-                    nivel: 0  // Nível inicial 0
+                    nivel: 0 
                 }]);
 
             if (profileError) {
                 console.error("Erro ao criar perfil:", profileError);
-                alert("Erro ao salvar o perfil. O usuário foi criado, mas houve um problema.");
+                
+                // Toast de Erro Crítico (Vermelho)
+                Toastify({
+                    text: "Erro ao salvar o perfil. O usuário foi criado, mas houve um problema.",
+                    duration: 4000,
+                    style: errorStyle
+                }).showToast();
                 return;
             }
         }
         
-        // 4. Cadastro concluído com sucesso e redirecionamento
-        alert("Cadastro realizado com sucesso! Redirecionando para o Dashboard.");
-        openDashboard(); // Assumindo que esta função exista em outro lugar
+        // 4. Cadastro concluído com sucesso! (Verde Suave)
+        Toastify({
+            text: "Cadastro realizado com sucesso! Redirecionando... 🚀",
+            duration: 2000,
+            close: true,
+            gravity: "top",
+            position: "right", // Centralizado para destaque
+            style: {
+                background: "#9A5CAD",
+                borderRadius: "10px",
+                fontWeight: "bold",
+                boxShadow: "0 4px 15px rgba(0,0,0,0.1)"
+            }
+        }).showToast();
+
+        // Redireciona após 2 segundos
+        setTimeout(() => {
+            openDashboard(); 
+        }, 2000);
     }
 }
 

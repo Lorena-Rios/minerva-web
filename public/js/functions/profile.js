@@ -19,12 +19,29 @@ async function loadProfileData() {
     // Pega o usuário logado
     const { data: { user }, error: userError } = await supabase.auth.getUser();
 
-    // Se não houver usuário, é uma página protegida. Redireciona para o login.
+    // Redireciona para o login.
     if (userError || !user) {
         console.error('Usuário não logado.', userError);
-        alert('Você precisa estar logado para ver seu perfil.');
-        // Ajuste o caminho para sua página de login
-        window.location.href = '/src/login/index.html'; 
+        
+        // SUBSTITUIÇÃO DO ALERT PELO TOASTIFY
+        Toastify({
+            text: "Você precisa estar logado para ver seu perfil.",
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center", // Centralizado para chamar atenção
+            style: {
+                background: "#C84A5B", // Vermelho Erro (Sua paleta)
+                borderRadius: "8px",
+                fontWeight: "bold"
+            }
+        }).showToast();
+
+        // Aguarda 2 segundos para o usuário ler antes de redirecionar
+        setTimeout(() => {
+            window.location.href = '/src/login/index.html'; 
+        }, 2000);
+
         return;
     }
 

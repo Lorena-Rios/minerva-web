@@ -1,4 +1,4 @@
-
+import { supabase } from "/public/js/configs/config.js";
 
 // Garante que a função esteja disponível globalmente para o 'onclick'
 export function toggleSidebar() {
@@ -96,3 +96,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// 5. Função de Logout
+async function handleLogout(event) {
+    // PULO DO GATO 1: Impede que o link recarregue a página na hora
+    if (event) event.preventDefault(); 
+
+    const { error } = await supabase.auth.signOut();
+    
+    if (error) {
+        console.error("Erro ao fazer logout:", error);
+        Toastify({
+            text: "Erro ao sair: " + error.message,
+            duration: 3000,
+            style: { background: "#C84A5B", borderRadius: "8px" }
+        }).showToast();
+    } else {
+        // Mostra o Toast
+        Toastify({
+            text: "Saindo do sistema... Até logo! 👋",
+            duration: 2000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            style: {
+                background: "#B5CA8A", // Verde Suave
+                borderRadius: "8px",
+                fontWeight: "bold",
+                color: "white"
+            }
+        }).showToast();
+
+        // PULO DO GATO 2: O redirecionamento FICA AQUI DENTRO
+        // Só muda de página depois de 2 segundos (2000ms)
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 2000);
+    }
+}
+
+window.handleLogout = handleLogout;

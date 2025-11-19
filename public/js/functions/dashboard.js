@@ -1,14 +1,22 @@
-
 import { supabase } from "/public/js/configs/config.js";
 import { loadSidebar } from "/public/js/utils/loadPartial.js";
 import { toggleSidebar } from "/public/js/main.js"
 
 window.toggleSidebar = toggleSidebar; // Garante acesso global
-
 loadSidebar(); // Carrega o partial
 
+// --- ESTILOS PADRÃO ---
+const toastError = {
+    background: "#C84A5B", // Vermelho Suave
+    borderRadius: "8px"
+};
 
-
+const toastSuccess = {
+    background: "#B5CA8A", // Verde Suave
+    borderRadius: "8px",
+    color: "white",
+    fontWeight: "bold"
+};
 
 async function loadUserData() {
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
@@ -22,8 +30,20 @@ async function loadUserData() {
     //  A "GUARDA" DE AUTENTICAÇÃO
     // ==========================================================
     if (!session) {
-        alert("Você precisa estar logado para acessar esta página.");
-        window.location.href = "../login/index.html";
+        // SUBSTITUIÇÃO 1: Redirecionamento por falta de login
+        Toastify({
+            text: "Você precisa estar logado para acessar esta página.",
+            duration: 3000,
+            gravity: "top",
+            position: "center",
+            style: toastError
+        }).showToast();
+
+        // Espera 2s para o usuário ler antes de chutar ele para o login
+        setTimeout(() => {
+            window.location.href = "../login/index.html";
+        }, 2000);
+        
         return;
     }
 
@@ -37,12 +57,21 @@ async function loadUserData() {
 
     if (profileError) {
         console.error("Erro ao buscar perfil do usuário:", profileError.message);
-        alert("Não foi possível carregar seu perfil.");
+        
+        // SUBSTITUIÇÃO 2: Erro de perfil
+        Toastify({
+            text: "Não foi possível carregar seu perfil.",
+            duration: 3000,
+            style: toastError
+        }).showToast();
+        
         return;
     }
-console.log("Sessão atual:", session);
-console.log("Usuário:", user);
-console.log("Perfil:", profile);
+
+    // Logs para debug (pode remover depois)
+    console.log("Sessão atual:", session);
+    console.log("Usuário:", user);
+    console.log("Perfil:", profile);
 
     
     if (profile) {
@@ -56,23 +85,7 @@ console.log("Perfil:", profile);
     }
 }
 
-// 5. [BÔNUS] Função de Logout
-async function handleLogout() {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-        console.error("Erro ao fazer logout:", error);
-    } else {
-        // Envia o usuário de volta para o login após o logout
-        alert("Logout realizado com sucesso!");
-        window.location.href = "../login/index.html";
-    }
-}
-
-
-window.handleLogout = handleLogout; // Permite chamar 'handleLogout()' de um botão no HTML
 
 document.addEventListener("DOMContentLoaded", () => {
     loadUserData();
 });
-
-

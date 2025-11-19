@@ -18,10 +18,27 @@ async function carregarMeusModulos() {
 
         if (authError || !user) {
             console.error('Erro ao buscar usuário:', authError);
-            alert('Você precisa estar logado para ver seus módulos.');
-            window.location.href = '/src/login/index.html'; // Redireciona para o login
+            Toastify({
+                text: "Você precisa estar logado para ver seus módulos.",
+                duration: 3000,
+                close: true,
+                gravity: "top", 
+                position: "right", // Centralizado chama mais atenção neste caso
+                style: {
+                    background: "#C84A5B", // Vermelho Erro (Sua paleta)
+                    borderRadius: "8px",
+                    fontWeight: "bold"
+                }
+            }).showToast();
+
+            // Aguarda 2 segundos para o usuário ler antes de redirecionar
+            setTimeout(() => {
+                window.location.href = '/src/login/index.html'; 
+            }, 2000);
+            
             return;
         }
+
 
         // 2. Busca os módulos criados por este usuário
         // Usamos .select() para pegar as colunas que queremos

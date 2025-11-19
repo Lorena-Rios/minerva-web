@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Minerva - Perfil</title>
         <link rel="icon" href="/public/images/logo.png" type="image">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
         <link rel="stylesheet" href="/public/css/input.css" />
         <link href="/public/css/dist/output.css" rel="stylesheet">
 
@@ -28,7 +29,23 @@
                         </div>
                         <div>
                             <label for="modulo-level" class="block text-sm font-medium text-gray-700">Nível Requerido</label>
-                            <input type="number" id="modulo-level" inputmode="numeric" name="modulo-level" value="1" min="0" required class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-[#9A5CAD] focus:border-[#9A5CAD]">
+                            <div class="flex items-center gap-4">
+                                <input 
+                                    type="range" 
+                                    id="modulo-level" 
+                                    name="modulo-level" 
+                                    min="0" 
+                                    max="10" 
+                                    value="1" 
+                                    step="1"
+                                    required 
+                                    class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#9A5CAD]"
+                                    oninput="document.getElementById('display-level').textContent = this.value"
+                                >
+                                
+                                <span id="display-level" class="text-xl font-bold text-[#9A5CAD] w-6 text-center">
+                                    1
+                                </span>
                         </div>
                     </div>
                 </fieldset>
@@ -66,6 +83,7 @@
 
         <!-- Ícones -->
         <script src="https://unpkg.com/phosphor-icons"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <script type="module" src="/public/js/main.js"></script>
         <script type="module" src="/public/js/functions/criar-modulo.js"></script>
     </body>

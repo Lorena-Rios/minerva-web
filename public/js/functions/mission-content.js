@@ -5,7 +5,7 @@ import { toggleSidebar } from "/public/js/main.js"
 window.toggleSidebar = toggleSidebar; // Garante acesso global
 
 
-
+let moduloId = null;
 let currentUser = null;
 let userProgress = []; // Array de IDs de temas concluídos
 let currentTemas = []; // Array de objetos de temas deste módulo
@@ -25,6 +25,7 @@ async function initializePage() {
     // Pega o ID do Módulo da URL
     const urlParams = new URLSearchParams(window.location.search);
     const moduloId = urlParams.get('modulo');
+    console.log(moduloId)
 
     if (!moduloId) {
         document.getElementById('temas-grid').innerHTML = "<p class='text-red-500'>Erro: ID do Módulo não encontrado.</p>";
@@ -110,7 +111,7 @@ function renderTemas() {
 
         const card = document.createElement('button');
         card.type = "button";
-        card.className = "bg-white rounded-2xl p-8 shadow-lg h-56 lg:h-64 flex items-center justify-start text-left transition hover:shadow-xl hover:-translate-y-1 relative";
+        card.className = "bg-white rounded-2xl p-8 shadow-lg h-32 lg:h-32 flex items-center justify-start text-left transition hover:shadow-xl hover:-translate-y-1 relative";
         
         card.dataset.temaId = tema.id;
         card.dataset.nome = tema.nome;
@@ -145,7 +146,7 @@ function renderTemas() {
     const challengeCard = document.createElement('a');
     
     // Faz o card ocupar a largura total no grid
-    challengeCard.className = "col-span-1 lg:col-span-2 rounded-2xl p-8 shadow-lg h-56 lg:h-64 flex flex-col items-center justify-center text-center transition relative";
+    challengeCard.className = "col-span-1 lg:col-span-2 rounded-2xl p-8 shadow-lg h-32 lg:h-32 flex flex-col items-center justify-center text-center transition relative";
 
 if (allComplete) {
         // ESTADO DESBLOQUEADO (Verde)

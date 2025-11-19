@@ -210,80 +210,77 @@ form.addEventListener('submit', async (e) => {
 });
 
 // --- Lógica de EXCLUIR (DELETE) ---
-
 btnExcluir.addEventListener('click', async () => {
     const moduloId = moduloIdInput.value;
     const moduloNome = moduloNomeInput.value;
 
-    // ATENÇÃO: Substitua 'prompt' por um modal customizado!
-    const confirmacao = prompt(`Para confirmar a exclusão, digite o nome do módulo: "${moduloNome}"`);
+    // 1. Abre o Modal pedindo o nome (Substituto do prompt)
+    const { value: nomeDigitado } = await Swal.fire({
+        title: 'Tem certeza?',
+        text: `Esta ação é irreversível! Para confirmar, digite o nome do módulo: "${moduloNome}"`,
+        input: 'text',
+        inputPlaceholder: 'Digite o nome aqui...',
+        showCancelButton: true,
+        confirmButtonText: 'Excluir',
+        cancelButtonText: 'Cancelar',
+        confirmButtonColor: '#C84A5B', // Vermelho da sua paleta
+        cancelButtonColor: '#B5CA8A',  // Roxo da sua paleta
+        inputValidator: (value) => {
+            if (!value) {
+                return 'Você precisa digitar o nome do módulo!';
+            }
+        }
+    });
 
-    if (confirmacao !== moduloNome) {
-        // Use um modal para "Nome incorreto"
-        console.warn('Exclusão cancelada. Nome não confere.');
+    // Se o usuário cancelou ou fechou o modal, paramos aqui
+    if (nomeDigitado === undefined) return;
+
+    if (nomeDigitado.trim() !== moduloNome.trim()) {
+        
+        Toastify({
+            text: "Nome incorreto. A exclusão foi cancelada.",
+            duration: 3000,
+            style: { background: "#C87A4A" }
+        }).showToast();
         return;
     }
 
+    // Se chegou aqui, o nome está certo!
     btnExcluir.disabled = true;
     btnExcluir.textContent = 'Excluindo...';
 
     try {
-        // Chama a NOVA RPC de exclusão
+        // Chama a RPC de exclusão
         const { error } = await supabase.rpc('excluir_modulo', {
             module_id: moduloId
         });
 
         if (error) throw error;
 
-        // Sucesso
-        console.log('Módulo excluído com sucesso!');
-        window.location.href = '/src/profile/meus-modulos/index.html'; // Volta para a lista
+        // 3. Sucesso!
+        Toastify({
+            text: "Módulo excluído com sucesso! 🗑️",
+            duration: 2000,
+            style: { background: "#B5CA8A", color: "white", fontWeight: "bold" } // Verde
+        }).showToast();
+
+        setTimeout(() => {
+            window.location.href = '/src/profile/meus-modulos/index.html';
+        }, 2000);
 
     } catch (error) {
         console.error('Erro ao excluir módulo:', error);
-        // Use um modal para o erro
+        
+        Toastify({
+            text: "Erro ao excluir: " + error.message,
+            duration: 4000,
+            style: { background: "#C84A5B" } // Vermelho
+        }).showToast();
+
         btnExcluir.disabled = false;
         btnExcluir.textContent = 'Excluir Módulo';
     }
 });
-
-
-// --- Função Helper: Build Payload ---
-// (Exatamente a mesma de 'criar-modulo.js')
-function buildPayload() {
-    const payload = {};
-    payload.nome = document.getElementById('modulo-nome').value;
-    payload.level_require = parseInt(document.getElementById('modulo-level').value, 10);
-    
-    payload.temas = [];
-    document.querySelectorAll('.tema-block').forEach(temaDiv => {
-        payload.temas.push({
-            nome: temaDiv.querySelector('.tema-nome').value,
-            conteudo: temaDiv.querySelector('.tema-conteudo').value,
-            ordem: parseInt(temaDiv.querySelector('.tema-ordem').value, 10)
-        });
-    });
-
-    payload.quiz = {
-        titulo: document.getElementById('quiz-titulo').value,
-        perguntas: []
-    };
-
-    document.querySelectorAll('.pergunta-block').forEach((perguntaDiv) => {
-        const pergunta = {
-            descricao: perguntaDiv.querySelector('.pergunta-descricao').value,
-            alternativas: []
-        };
-        perguntaDiv.querySelectorAll('.alternativa-item').forEach((altItem) => {
-            pergunta.alternativas.push({
-                descricao: altItem.querySelector('.alternativa-descricao').value,
-                is_correta: altItem.querySelector('.alternativa-correta').checked
-            });
-        });
-        payload.quiz.perguntas.push(pergunta);
-    });
-    return payload;
-}
 
 // --- Inicia o carregamento ---
 document.addEventListener('DOMContentLoaded', carregarDadosDoModulo);

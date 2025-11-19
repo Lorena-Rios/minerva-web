@@ -5,6 +5,17 @@ import { toggleSidebar } from "/public/js/main.js";
 loadSidebar(); // Carrega o partial
 window.toggleSidebar = toggleSidebar; // Garante acesso global
 
+// --- ESTILOS DO TOASTIFY ---
+const toastError = {
+    background: "#C84A5B", // Vermelho Suave
+    borderRadius: "8px"
+};
+
+const toastInfo = {
+    background: "#C87A4A", // Laranja (Aviso)
+    borderRadius: "8px"
+};
+
 // --- 1. VARIÁVEIS DE ESTADO ---
 let currentUser = null;
 let moduloId = null;
@@ -50,8 +61,16 @@ async function initializePage() {
     currentUser = user;
 
     if (!currentUser) {
-        alert("Você precisa estar logado para fazer o quiz.");
-        window.location.href = "/src/login/index.html"; // Redireciona para o login
+        // SUBSTITUIÇÃO DO ALERT
+        Toastify({
+            text: "Você precisa estar logado para fazer o quiz.",
+            duration: 3000,
+            style: toastError
+        }).showToast();
+        
+        setTimeout(() => {
+            window.location.href = "/src/login/index.html"; 
+        }, 2000);
         return;
     }
 
@@ -179,7 +198,14 @@ async function handleSubmitAnswer() {
 
     if (gradeError) {
         console.error("Erro ao salvar resposta:", gradeError);
-        alert("Houve um erro ao salvar sua resposta. Tente novamente.");
+        
+        // SUBSTITUIÇÃO DO ALERT
+        Toastify({
+            text: "Houve um erro ao salvar sua resposta. Tente novamente.",
+            duration: 4000,
+            style: toastError
+        }).showToast();
+
         isAnswered = false;
         mainActionBtnEl.disabled = false;
         return;

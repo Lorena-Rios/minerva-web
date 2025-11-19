@@ -5,6 +5,18 @@ import { toggleSidebar } from "/public/js/main.js";
 loadSidebar(); // Carrega o partial
 window.toggleSidebar = toggleSidebar; // Garante acesso global
 
+// --- ESTILOS DO TOASTIFY (PADRONIZADOS) ---
+const toastError = {
+    background: "#C84A5B", // Vermelho suave
+    borderRadius: "8px"
+};
+
+const toastSuccess = {
+    background: "#B5CA8A", // Verde suave
+    borderRadius: "8px",
+    color: "white",
+    fontWeight: "bold"
+};
 
 // --- Seletores do DOM ---
 const form = document.getElementById('form-criar-modulo');
@@ -42,8 +54,12 @@ btnAddTema.addEventListener('click', () => {
 btnAddPergunta.addEventListener('click', () => {
     // Verifica ANTES de adicionar
     if (perguntaCount >= 5) {
-        alert('Você já atingiu o limite de 5 perguntas.');
-        return; // Para a execução da função aqui
+        Toastify({
+            text: "Você já atingiu o limite de 5 perguntas.",
+            duration: 3000,
+            style: toastError
+        }).showToast();
+        return; 
     }
 
 
@@ -86,7 +102,11 @@ form.addEventListener('submit', async (e) => {
 
     // Validação
     if (perguntaCount !== 5) {
-        alert('Você deve criar exatamente 5 perguntas para o quiz.');
+        Toastify({
+            text: "Você deve criar exatamente 5 perguntas para o quiz.",
+            duration: 3000,
+            style: toastError
+        }).showToast();
         return;
     }
     
@@ -113,12 +133,27 @@ form.addEventListener('submit', async (e) => {
         }
 
         // 3. Sucesso!
-        alert(`Missão criada com sucesso! (ID: ${data})`);
-        window.location.href = '/src/dashboard/index.html'; // Redireciona
+        Toastify({
+            text: "Missão criada com sucesso! Redirecionando... 🚀",
+            duration: 2000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            style: toastSuccess
+        }).showToast();
+
+        // Redireciona após 2 segundos
+        setTimeout(() => {
+            window.location.href = '/src/profile/index.html'; 
+        }, 2000);
 
     } catch (error) {
         console.error('Erro ao criar missão:', error);
-        alert(`Erro: ${error.message}`);
+        Toastify({
+            text: "Erro: " + error.message,
+            duration: 5000, // Um pouco mais longo para dar tempo de ler
+            style: toastError
+        }).showToast();
         
         // Reabilita o botão em caso de erro
         submitButton.disabled = false;
