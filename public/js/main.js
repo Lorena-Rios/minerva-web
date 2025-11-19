@@ -64,3 +64,35 @@ window.closeModal = function() {
 }
 
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Procura TODOS os botões que tenham a classe 'toggle-pass-btn'
+    const toggleButtons = document.querySelectorAll('.toggle-pass-btn');
+
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // 2. Descobre qual input esse botão controla (pelo atributo data-target)
+            const targetId = button.getAttribute('data-target');
+            const input = document.getElementById(targetId);
+
+            // 3. Encontra os ícones DENTRO deste botão específico
+            const eyeOpen = button.querySelector('.eye-open');
+            const eyeClosed = button.querySelector('.eye-closed');
+
+            if (input && eyeOpen && eyeClosed) {
+                // 4. Alterna o tipo do input
+                const isPassword = input.type === 'password';
+                input.type = isPassword ? 'text' : 'password';
+
+                // 5. Alterna a visibilidade dos ícones
+                if (isPassword) {
+                    eyeOpen.classList.add('hidden');
+                    eyeClosed.classList.remove('hidden');
+                } else {
+                    eyeOpen.classList.remove('hidden');
+                    eyeClosed.classList.add('hidden');
+                }
+            }
+        });
+    });
+});

@@ -15,6 +15,8 @@ let selectedAlternativaId = null;
 let isAnswered = false; 
 let initialUserPoints = 0;
 let finalUserPoints = 0; 
+let acertosNesteQuiz = 0;
+let saldoPontosSessao = 0;
 
 // --- 2. ELEMENTOS DO DOM (para não repetir getElementById) ---
 let quizCounterEl, quizTitleEl, perguntaDescricaoEl, alternativasContainerEl, mainActionBtnEl;
@@ -183,12 +185,23 @@ async function handleSubmitAnswer() {
         return;
     }
 
+    finalUserPoints = gradeData.pontos;
+
+    // --- CORREÇÃO AQUI ---
+    // Se o banco retornou uma variação (ganhou ou perdeu pontos), soma ao saldo da sessão
+    if (gradeData.variacao_pontos) {
+        saldoPontosSessao += gradeData.variacao_pontos;
+    }
+
     // Sua função 'grade_answer' retorna o *novo total* de pontos do usuário.
     finalUserPoints = gradeData.pontos;
 
     // Revela as respostas (lógica de highlight)
     const isCorreta = gradeData.is_correta;
 
+    if (isCorreta) {
+        acertosNesteQuiz++; 
+    }
     
     Array.from(alternativasContainerEl.children).forEach(btn => {
         const isSelected = (btn.dataset.id === selectedAlternativaId);
@@ -232,34 +245,35 @@ function handleNextQuestion() {
 // --- FUNÇÕES DO MODAL ---
 function showFinalModal() {
     const prosseguirLink = document.getElementById('modal-prosseguir-link');
-
     const feedbackText = document.getElementById('modal-feedback-text');
 
-    // 'moduloId' é a variável global que pegamos no início do script
+    // Define o link de "Prosseguir"
     if (prosseguirLink && moduloId) {
-        // Define o link de "Prosseguir" dinamicamente
         prosseguirLink.href = `/src/mission-page/mission-content/index.html?modulo=${moduloId}`;
     } else {
-        console.error("Não foi possível definir o link 'Prosseguir': moduloId ou elemento não encontrado.");
         prosseguirLink.href = '/src/dashboard/index.html'; 
     }
     
-
+    // LÓGICA NOVA DE PONTOS
     if (feedbackText) {
-        const pointsEarned = finalUserPoints - initialUserPoints;
-        
-        if (pointsEarned > 0) {
-            feedbackText.textContent = `+${pointsEarned} pontos!`;
-        } else if (pointsEarned < 0) {
-            feedbackText.textContent = `${pointsEarned} pontos. (Você mudou uma resposta)`;
-        } else {
-            feedbackText.textContent = "Etapa concluída!"; // Se não ganhou/perdeu pontos
+            // Agora 'saldoPontosSessao' existe e funciona!
+            if (saldoPontosSessao > 0) {
+                feedbackText.textContent = `+${saldoPontosSessao} pontos nesta sessão!`;
+                feedbackText.classList.add('text-green-600');
+                feedbackText.classList.remove('text-red-600');
+            } else if (saldoPontosSessao < 0) {
+                feedbackText.textContent = `${saldoPontosSessao} pontos. (Você revisou e errou algumas)`;
+                feedbackText.classList.add('text-red-600');
+                feedbackText.classList.remove('text-green-600');
+            } else {
+                feedbackText.textContent = "Sua pontuação não mudou.";
+                feedbackText.classList.remove('text-green-600', 'text-red-600');
+            }
         }
+        
+        openModal();
     }
-
-    openModal(); // Abre o modal "Parabéns"
-}
-
+    
 function openModal() {
     const modal = document.getElementById('modal');
     if (modal) modal.classList.remove('hidden');
