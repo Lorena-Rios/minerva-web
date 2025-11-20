@@ -10,70 +10,54 @@
     <link href="/public/css/dist/output.css" rel="stylesheet">
 </head>
 
-    <body class="bg-[#C8A9E0] min-h-screen flex">
-    <!-- Sidebar -->
-    <div id="sidebar-container"></div>
+    <body class="bg-white min-h-screen flex overflow-hidden">
+    
+        <div id="sidebar-container"></div>
 
-    <!-- Conteúdo principal -->
-    <main class="flex-1 p-8 md:p-16">
-        <div class="max-w-4xl mx-auto bg-white p-10 rounded-2xl shadow-xl">
+        <main class="flex-1 relative h-screen overflow-y-auto">
 
-            <!-- Logo -->
-            <div class="flex justify-center mb-8">
-                <a href="/src/dashboard/index.html">
-                    <img src="/public/images/Minerva_logoGreen.png" alt="Logo Minerva" class="h-18">
-                </a>
-            </div>
+            <div class="absolute top-0 left-0 w-full h-[45%] bg-[#C8A9E0] z-0"></div>
 
-            <!-- Título -->
-            <h1 class="text-4xl font-bold text-center text-[#B5CA8A] mb-6">
-                Sobre o Projeto Minerva
-            </h1>
+            <div class="relative z-10 flex flex-col items-center w-full py-10 px-6 md:px-12">
 
-            <!-- Texto -->
-            <p class="text-lg leading-relaxed text-gray-700 mb-6">
-                <strong>Minerva</strong> é uma proposta de aplicativo gamificado para o ensino de lógica de programação,
-                desenvolvido para os ingressantes do curso de Sistemas de Informação da UNEX.
-            </p>
+                <h1 class="text-4xl md:text-5xl font-black text-black mb-8 drop-shadow-sm">
+                    Minerva?
+                </h1>
 
-            <p class="text-lg leading-relaxed text-gray-700 mb-6">
-                O objetivo deste trabalho é oferecer uma ferramenta educacional que apoie e facilite o processo de aprendizagem
-                nas disciplinas de <strong>Introdução a Algoritmos</strong> e <strong>Estrutura de Dados</strong>.
-            </p>
-
-            <p class="text-lg leading-relaxed text-gray-700 mb-10">
-                Com essa proposta, buscamos criar um sistema de recompensas que valorize o esforço dos estudantes,
-                contextualizar os conteúdos com situações próximas de sua realidade e tornar mais leve e acessível
-                o primeiro contato com a programação.
-            </p>
-
-            <!-- Criadoras -->
-            <h2 class="text-3xl font-semibold text-[#B5CA8A] mb-6 text-center">
-                Autoras do Projeto
-            </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-                <!-- Criadora 1 -->
-                <div class="flex flex-col items-center bg-[#C8A9E0]/60 p-3 rounded-xl shadow">
-                    <img src="/public/images/lorena.png" 
-                         class="rounded-lg mb-4 shadow-md" 
-                         alt="Lorena Rios">
-                    <p class="text-base font-semibold text-[#9A5CAD]">Lorena Rios</p>
+                <div class="w-full max-w-3xl mb-12">
+                    <img 
+                        src="/public/images/minervaGirls.jpg" 
+                        alt="Foto das Criadoras" 
+                        class="w-full h-auto rounded-[2.5rem] shadow-2xl object-cover aspect-video"
+                    >
                 </div>
 
-                <!-- Criadora 2 -->
-                <div class="flex flex-col items-center bg-[#B5CA8A]/60 p-3 rounded-xl shadow">
-                    <img src="/public/images/bea.png" 
-                         class="rounded-lg mb-4 shadow-md" 
-                         alt="Ana Beatriz Sena">
-                    <p class="text-base font-semibold text-[#6A9850]">Ana Beatriz Sena</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-5xl text-gray-800 text-justify leading-relaxed text-sm md:text-base font-medium">
+                    
+                    <div class="space-y-4">
+                        <p>
+                            Minerva é uma proposta de app gamificado para o ensino de <strong>lógica de programação</strong> para ingressantes no curso de Sistemas de Informação da Unex. 
+                            Idealizada e desenvolvida por <strong>Ana Beatriz Sena</strong> e <strong>Lorena Rios</strong> como Trabalho de Conclusão de Curso (TCC) sob a orientação da Prof. <strong>Lucas Almeida Silva</strong>.
+                        </p>
+                        <p>
+                            O objetivo principal deste trabalho é desenvolver uma ferramenta de ensino gamificada para apoiar os alunos nas disciplinas de <strong>Introdução a Algoritmos e Estrutura de Dados</strong>.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <p>
+                            Com essa proposta, buscamos criar um sistema de recompensas que valorize o esforço dos estudantes, contextualizar os conteúdos com situações próximas da sua realidade, e tornar mais leve o primeiro contato com a programação.
+                        </p>
+                        <p>
+                            Além disso, buscamos incentivar o hábito do estudo através do <strong>ensino lúdico</strong> de forma contínua e motivadora, nivelando o conhecimento e promovendo igualdade de oportunidades.
+                        </p>
+                    </div>
+
                 </div>
 
             </div>
+        </main>
 
-        </div>
-    </main>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://unpkg.com/phosphor-icons"></script>

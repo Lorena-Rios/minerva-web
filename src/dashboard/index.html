@@ -18,7 +18,7 @@
     <!-- Conteúdo principal -->
     <main 
       id="main-content" 
-      class="flex-1 p-6 sm:p-8 md:p-10 pl-16 md:pl-10 relative transition-all duration-300 ease-in-out"
+      class="flex-1 w-full min-h-screen p-6 sm:p-8 md:p-10 pt-20 md:pt-10 relative transition-all duration-300 ease-in-out md:ml-16"
     >
 
       <!-- Saudação -->
@@ -31,39 +31,55 @@
         </p>
       </div>
 
-      <!-- Grid dos Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            
-            <a href="/src/mission-page/index.html" class="no-underline">
-                <div class="bg-[#9A5CAD] text-white rounded-2xl p-6 shadow-lg flex flex-col justify-end 
-                            aspect-square md:aspect-[unset] md:h-full 
-                            transition hover:shadow-xl hover:-translate-y-1">
-                    <p class="text-lg sm:text-xl font-bold text-[#C8A9E0]">Comece suas</p>
-                    <h2 class="text-3xl sm:text-5xl font-bold text-[#C8A9E0]">Missões</h2>
-                </div>
-            </a>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto md:h-[600px]">
+          
+          <div class="grid grid-cols-1 gap-6 md:h-full">
+              
+              <a href="/src/mission-page/index.html" class="no-underline group h-full">
+                  <div class="bg-[#9053A7] text-white rounded-3xl p-6 shadow-lg flex flex-col justify-end 
+                              aspect-square md:aspect-auto h-full relative overflow-hidden
+                              transition hover:shadow-xl hover:-translate-y-1">
+                      
+                      <img src="/public/images/trofeu.png" alt="Troféu" 
+                           class="absolute top-2 right-2 w-24 sm:w-32 opacity-90 group-hover:scale-110 transition-transform duration-500">
 
-            <div class="grid grid-cols-1 gap-6">
-                <a href="/src/about/index.html" class="no-underline">
-                    <div class="bg-[#C8A9E0] rounded-2xl p-6 shadow-lg flex flex-col justify-end 
-                                aspect-square sm:aspect-[4/3] 
-                                transition hover:shadow-xl hover:-translate-y-1">
-                        <p class="text-lg sm:text-xl font-bold text-[#9A5CAD]">Sobre o</p>
-                        <h2 class="text-3xl sm:text-5xl font-bold text-[#9A5CAD]">Minerva</h2>
-                    </div>
-                </a>
+                      <div class="z-10">
+                          <p class="text-lg sm:text-xl font-bold text-[#C8A9E0] mb-1">Comece suas</p>
+                          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#C8A9E0] tracking-tight">Missões</h2>
+                      </div>
+                  </div>
+              </a>
 
-                <a href="/src/profile/index.html" class="no-underline">
-                    <div class="bg-[#B5CA8A] rounded-2xl p-6 shadow-lg flex flex-col justify-end 
-                                aspect-square sm:aspect-[4/3] 
-                                transition hover:shadow-xl hover:-translate-y-1">
-                        <p class="text-lg sm:text-xl font-bold text-[#6A9850]">Veja seus</p>
-                        <h2 class="text-3xl sm:text-5xl font-bold text-[#6A9850]">Pontos</h2>
-                    </div>
-                </a>
-            </div>
+              <a href="/src/about/index.html" class="no-underline group h-full">
+                  <div class="bg-[#C8A9E0] rounded-3xl p-6 shadow-lg flex flex-col justify-end 
+                              aspect-square md:aspect-auto h-full relative overflow-hidden
+                              transition hover:shadow-xl hover:-translate-y-1">
+                      
+                      <div class="z-10">
+                          <p class="text-lg sm:text-xl font-bold text-[#7A4B8E]">Sobre o</p>
+                          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#7A4B8E] tracking-tight">Minerva</h2>
+                      </div>
+                  </div>
+              </a>
 
-        </div>
+          </div>
+
+          <a href="/src/profile/index.html" class="no-underline group md:h-full">
+              <div class="bg-[#B5CA8A] rounded-3xl p-8 shadow-lg flex flex-col justify-end 
+                          aspect-square md:aspect-auto h-full relative overflow-hidden
+                          transition hover:shadow-xl hover:-translate-y-1">
+                  
+                  <img src="/public/images/medal.png" alt="Medalha" 
+                       class="absolute -top-4 -right-4 w-40 sm:w-56 opacity-90 transform group-hover:rotate-6 transition-transform duration-500">
+
+                  <div class="z-10 mt-auto">
+                      <p class="text-lg sm:text-xl font-bold text-[#5A7D38]">Veja seus</p>
+                      <h2 class="text-4xl sm:text-5xl font-extrabold text-[#5A7D38] tracking-tight">Pontos</h2>
+                  </div>
+              </div>
+          </a>
+
+      </div>
       </main>
 
 

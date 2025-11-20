@@ -23,21 +23,25 @@
         </div>
 
         <!-- Container principal -->
-        <div class="border border-[#F8F8F8] rounded-3xl
-                    flex flex-col md:flex-row items-center justify-center gap-10 
-                    px-4 py-8 md:p-8 w-[90%] max-w-5xl">
+        <div
+            class="flex flex-col md:flex-row items-center justify-center 
+                gap-4 md:gap-10 
+                p-4 md:p-8 
+                w-[90%] max-w-6xl bg-[#F8F8F8] rounded-3xl shadow-md"
+        >
+
 
         <!-- Ilustração -->
         <div class="flex-1 flex items-center justify-center">
-            <img 
-            src="/public/images/coding.png" 
-            alt="Ilustração" 
-            class="w-64 md:w-[100%] p-4 hidden md:flex"
+            <img
+            src="/public/images/codingSingIn.png"
+            alt="Ilustração"
+            class="w-full h-full p-1 hidden md:flex object-cover rounded-2xl"
             />
         </div>
 
         <!-- Card de login -->
-        <div class="flex-1 bg-white rounded-3xl shadow-xl px-6 py-10 flex flex-col gap-6 max-w-md w-full p-4 mb-4 md:mb-0">
+        <div class="flex-1 rounded-3xl px-6 py-10 flex flex-col gap-6 max-w-md w-full p-4 mb-4 md:mb-0">
             
             <!-- Logo no card -->
             <div class="flex justify-center">
@@ -45,15 +49,19 @@
             </div>
 
             <!-- Título -->
-            <div class="text-center">
-            <h1 class="text-2xl font-bold text-[#9A5CAD]">Faça login</h1>
-            <p class="text-[#81A86B] text-xl font-medium">Vamos aprender juntos!</p>
+            <div class="text-left mb-6">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-[#4E3B53] leading-tight">
+                    Olá, <br> Bem-vindo!
+                </h1>
+                <p class="text-[#81A86B] text-lg font-bold mt-2">
+                    Vamos aprender juntos!
+                </p>
             </div>
 
             <!-- Inputs -->
             <form class="flex flex-col space-y-4" onsubmit="event.preventDefault(); handleLogin();">
             <div class="mb-4">
-            <div class="relative w-full bg-white rounded-xl shadow-md">
+            <div class="relative w-full rounded-xl shadow-md">
                 <input 
                     type="email" 
                     placeholder="Email"
@@ -61,11 +69,11 @@
                     class="w-full px-4 py-3 pl-7 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#9A5CAD]" 
                 />
             </div>
-        </div>
+            </div>
 
         <!-- Campo Senha -->
-        <div class="mb-6">
-            <div class="relative w-full bg-white rounded-xl shadow-md">
+        <div class="mb-8">
+            <div class="relative w-full rounded-xl shadow-md">
                 <input 
                     id="password"
                     type="password" 
@@ -97,7 +105,7 @@
             <!-- Botão -->
             <button 
                 type="submit"
-                class="mt-4 bg-[#81A86B] text-white font-semibold py-3 shadow-md rounded-xl hover:bg-[#B5CA8A] transition text-center"
+                class="mt-6 bg-[#81A86B] text-white font-semibold py-3 shadow-md rounded-xl hover:bg-[#B5CA8A] transition text-center"
                 href="/src/dashboard/index.html"
                 >
                 Entrar

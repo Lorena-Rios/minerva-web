@@ -22,153 +22,159 @@
 
         <!-- Container principal -->
         <div
-        class="flex flex-col md:flex-row items-center justify-center gap-10 
-                p-6 md:p-8 w-[90%] max-w-6xl bg-transparent border border-white rounded-3xl"
+            class="flex flex-col md:flex-row items-center justify-center 
+                gap-4 md:gap-10 
+                p-4 md:p-8 
+                w-[90%] max-w-6xl bg-[#F8F8F8] rounded-3xl shadow-md"
         >
 
         <!-- Formulário -->
         <main
-            class="flex-1 bg-white rounded-3xl shadow-sm px-6 py-10 
+            class="flex-1 rounded-3xl px-6 px-4 py-6 md:py-10 
                 flex flex-col gap-6 max-w-lg w-full z-20"
         >
             <div>
-            <h1 class="text-2xl font-bold text-[#6A9850] mb-6 ">
-                Criar conta
-            </h1>
-
-            <form class="space-y-4" onsubmit="event.preventDefault(); handleSignUp();">
-                <!-- Email -->
-                <div>
-                    <label class="text-sm font-medium text-[#8C539D]">Email*</label>
-                    <input
-                        id="email"
-                        type="email"
-                        placeholder="Digite seu Email"
-                        class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
-                            focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
-                    />
-                    </div>
-
-                    <!-- Usuário -->
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-extrabold text-[#4E3B53]">
+                        Criar Conta
+                    </h1>
+                    
+                    <p class="text-lg font-bold text-[#6A9850]">
+                        Junte-se ao time!
+                    </p>
+                </div>
+                <form class="space-y-4" onsubmit="event.preventDefault(); handleSignUp();">
+                    <!-- Email -->
                     <div>
-                    <label class="text-sm font-medium text-[#8C539D]">Usuário*</label>
-                    <input
-                        id="users"
-                        type="text"
-                        placeholder="Usuário"
-                        class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
-                            focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
-                    />
-                    </div>
-
-                    <!-- Senhas -->
-                    <div class="flex gap-4">
-                        
-                        <div class="w-1/2">
-                            <label class="text-sm font-medium text-[#8C539D]">Criar Senha</label>
-                            <div class="relative w-full mt-1">
-                                <input
-                                    id="password"
-                                    type="password"
-                                    placeholder="Senha"
-                                    class="w-full px-4 py-3 pr-12 rounded-xl border shadow-md focus:outline-none focus:ring-2 focus:ring-[#B8C98C] transition-colors"
-                                />
-                                
-                                    <button 
-                                        id="togglePassword"
-                                        type="button"
-                                        data-target="password"
-                                        class="toggle-pass-btn absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none"
-                                    >
-                                        <!-- Ícone Olho Aberto -->
-                                        <svg id="eyeOpen" class="eye-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
-                                            <circle cx="12" cy="12" r="3"/>
-                                        </svg>
-                                        <!-- Ícone Olho Fechado -->
-                                        <svg id="eyeClosed" class="eye-closed hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
-                                            <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
-                                            <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                                            <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                            <line x1="2" y1="2" x2="22" y2="22"/>
-                                        </svg>
-                                    </button>
-                            </div>
+                        <label class="text-sm font-medium text-[#8C539D]">Email*</label>
+                        <input
+                            id="email"
+                            type="email"
+                            placeholder="Digite seu Email"
+                            class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
+                                focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
+                        />
                         </div>
 
-                        <div class="w-1/2">
-                            <label class="text-sm font-medium text-[#8C539D]">Repetir Senha</label>
-                            <div class="relative w-full mt-1">
-                                <input
-                                    id="confirm-password"
-                                    type="password"
-                                    placeholder="Senha"
-                                    class="w-full px-4 py-3 pr-12 rounded-xl border shadow-md focus:outline-none focus:ring-2 focus:ring-[#B8C98C] transition-colors"
-                                />
+                        <!-- Usuário -->
+                        <div>
+                        <label class="text-sm font-medium text-[#8C539D]">Usuário*</label>
+                        <input
+                            id="users"
+                            type="text"
+                            placeholder="Usuário"
+                            class="w-full mt-1 px-4 py-3 rounded-xl border shadow-md
+                                focus:outline-none focus:ring-2 focus:ring-[#B8C98C] shadow-md"
+                        />
+                        </div>
 
-                                    <button 
-                                        id="togglePassword"
-                                        type="button"
-                                        data-target="confirm-password"
-                                        class="toggle-pass-btn absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none"
-                                    >
-                                        <!-- Ícone Olho Aberto -->
-                                        <svg id="eyeOpen" class="eye-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
-                                            <circle cx="12" cy="12" r="3"/>
-                                        </svg>
-                                        <!-- Ícone Olho Fechado -->
-                                        <svg id="eyeClosed" class="eye-closed hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
-                                            <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
-                                            <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                                            <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                                            <line x1="2" y1="2" x2="22" y2="22"/>
-                                        </svg>
-                                    </button>
+                        <!-- Senhas -->
+                        <div class="flex gap-4">
+                            
+                            <div class="w-1/2">
+                                <label class="text-sm font-medium text-[#8C539D]">Criar Senha</label>
+                                <div class="relative w-full mt-1">
+                                    <input
+                                        id="password"
+                                        type="password"
+                                        placeholder="Senha"
+                                        class="w-full px-4 py-3 pr-12 rounded-xl border shadow-md focus:outline-none focus:ring-2 focus:ring-[#B8C98C] transition-colors"
+                                    />
+                                    
+                                        <button 
+                                            id="togglePassword"
+                                            type="button"
+                                            data-target="password"
+                                            class="toggle-pass-btn absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none"
+                                        >
+                                            <!-- Ícone Olho Aberto -->
+                                            <svg id="eyeOpen" class="eye-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                                <circle cx="12" cy="12" r="3"/>
+                                            </svg>
+                                            <!-- Ícone Olho Fechado -->
+                                            <svg id="eyeClosed" class="eye-closed hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+                                                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                <line x1="2" y1="2" x2="22" y2="22"/>
+                                            </svg>
+                                        </button>
+                                </div>
+                            </div>
+
+                            <div class="w-1/2">
+                                <label class="text-sm font-medium text-[#8C539D]">Repetir Senha</label>
+                                <div class="relative w-full mt-1">
+                                    <input
+                                        id="confirm-password"
+                                        type="password"
+                                        placeholder="Senha"
+                                        class="w-full px-4 py-3 pr-12 rounded-xl border shadow-md focus:outline-none focus:ring-2 focus:ring-[#B8C98C] transition-colors"
+                                    />
+
+                                        <button 
+                                            id="togglePassword"
+                                            type="button"
+                                            data-target="confirm-password"
+                                            class="toggle-pass-btn absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none"
+                                        >
+                                            <!-- Ícone Olho Aberto -->
+                                            <svg id="eyeOpen" class="eye-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                                <circle cx="12" cy="12" r="3"/>
+                                            </svg>
+                                            <!-- Ícone Olho Fechado -->
+                                            <svg id="eyeClosed" class="eye-closed hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+                                                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                                                <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                                                <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                                                <line x1="2" y1="2" x2="22" y2="22"/>
+                                            </svg>
+                                        </button>
+                                </div>
                             </div>
                         </div>
+                    
+                    <div>
+                        <label for="cargo" class="block text-sm font-medium text-gray-700">Cargo*</label>
+                        <select id="cargo" class="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#9A5CAD] shadow-md">
+                            <option value="Aluno">Aluno</option>
+                            <option value="Professor">Professor</option>
+                        </select>
                     </div>
-                
-                <div>
-                    <label for="cargo" class="block text-sm font-medium text-gray-700">Cargo*</label>
-                    <select id="cargo" class="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#9A5CAD] shadow-md">
-                        <option value="Aluno">Aluno</option>
-                        <option value="Professor">Professor</option>
-                    </select>
+
+                    <!-- Botão -->
+                    <button
+                    type="submit"
+                    class="w-full mt-6 bg-[#9053A7] hover:bg-[#7F4793] text-white font-medium py-3 rounded-xl shadow-md transition text"
+                    >
+                    Cadastrar
+                    </button>
+                </form>
                 </div>
 
-                <!-- Botão -->
-                <button
-                type="submit"
-                class="w-full mt-6 bg-[#9053A7] hover:bg-[#7F4793] text-white font-medium py-3 rounded-xl shadow-md transition text"
+                <!-- Link de login -->
+                <p class="text-sm text-center text-[#9A5CAD] mt-4">
+                Já tem conta?
+                <a href="/src/login/index.html" class="text-[#9A5CAD] font-bold hover:underline">
+                    Fazer Login
+                </a>
+                </p>
+            </main>
+
+            
+                <!-- Caixa ilustrativa -->
+                <div
+                    class="hidden md:flex w-full max-w-lg"
                 >
-                Cadastrar
-                </button>
-            </form>
+                    <img
+                        src="/public/images/codingSingUp.png"
+                        alt="Ilustração"
+                        class="w-full h-full object-cover rounded-xl"
+                    />
+                </div>
             </div>
-
-            <!-- Link de login -->
-            <p class="text-sm text-center text-[#9A5CAD] mt-4">
-            Já tem conta?
-            <a href="/src/login/index.html" class="text-[#9A5CAD] font-bold hover:underline">
-                Fazer Login
-            </a>
-            </p>
-        </main>
-
-        
-            <!-- Caixa ilustrativa -->
-         <div
-            class="hidden md:flex p-8 md:p-10 w-full max-w-lg h-[32rem] flex-col items-center justify-center rounded-2xl border border-white"
-        >
-            <img 
-                src="/public/images/coding.png" 
-                alt="Ilustração" 
-                class="w-64 md:w-[100%] p-4"
-            />
-        </div>
-
-        </div>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <script type="module" src="/public/js/main.js"></script>
         <script type="module" src="/public/js/functions/signUp.js"></script>

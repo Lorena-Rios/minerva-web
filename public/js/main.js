@@ -97,7 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// 5. Função de Logout
+
+
+// Função de Logout
 async function handleLogout(event) {
     // PULO DO GATO 1: Impede que o link recarregue a página na hora
     if (event) event.preventDefault(); 
@@ -120,7 +122,7 @@ async function handleLogout(event) {
             gravity: "top",
             position: "right",
             style: {
-                background: "#B5CA8A", // Verde Suave
+                background: "#9A5CAD", // Verde Suave
                 borderRadius: "8px",
                 fontWeight: "bold",
                 color: "white"
@@ -130,7 +132,7 @@ async function handleLogout(event) {
         // PULO DO GATO 2: O redirecionamento FICA AQUI DENTRO
         // Só muda de página depois de 2 segundos (2000ms)
         setTimeout(() => {
-            window.location.href = "index.html";
+            window.location.href = "/index.html";
         }, 2000);
     }
 }

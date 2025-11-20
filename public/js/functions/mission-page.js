@@ -166,7 +166,7 @@ async function getCurrentUserProfile() {
 
 function createModuleCard(modulo, unlocked) {
   const a = document.createElement("a");
-  a.className = "p-6 block";
+  a.className = "p-3 block";
   a.href = unlocked
     ? `/src/mission-page/mission-content/index.html?modulo=${modulo.id}`
     : "#";
@@ -175,16 +175,30 @@ function createModuleCard(modulo, unlocked) {
   a.setAttribute('data-id', modulo.id);
   a.setAttribute('role', 'button');
 
-  a.innerHTML = `
-    <div class="bg-white rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition max-w-4xl mx-auto">
-      <div class="w-[20%] h-24 bg-[#9A5CAD] rounded-md flex-shrink-0"></div>
-      <div class="flex-1">
-        <h3 class="text-xl font-bold text-gray-800">${escapeHtml(modulo.nome)}</h3>
-        <p class="text-xs text-gray-400 mt-1">Nível requerido: ${modulo.level_require ?? 0}</p>
+a.innerHTML = `
+    <div class="bg-white rounded-2xl p-4 md:p-6 flex items-center justify-between hover:shadow-lg transition max-w-4xl mx-auto">
+      
+      <div class="flex items-center gap-3 md:gap-3 flex-1">
+        
+        <div class="w-12 h-16 md:w-20 md:h-24 bg-[#9A5CAD] rounded-md flex-shrink-0"></div>
+        
+        <div class="flex-col">
+          <h3 class="text-base md:text-xl font-bold text-gray-800 leading-tight">
+            ${escapeHtml(modulo.nome)}
+          </h3>
+          <p class="text-xs text-gray-400 mt-1">
+            Nível requerido: ${modulo.level_require ?? 0}
+          </p>
+        </div>
       </div>
-      <div class="rounded-lg flex items-center justify-center flex-shrink-0">
-        ${unlocked ? '' : '<img src="/public/icon/padlock1.png" alt="Locked" class="w-16 h-16">'}
+
+      <div class="flex-shrink-0 ml-3">
+        ${unlocked 
+          ? '' 
+          : '<img src="/public/icon/padlock1.png" alt="Locked" class="w-8 h-8 md:w-14 md:h-14 object-contain opacity-60">' 
+        }
       </div>
+
     </div>
   `;
   return a;
