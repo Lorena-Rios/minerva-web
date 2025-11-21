@@ -40,7 +40,24 @@
                         </div>
                         <div>
                             <label for="modulo-level" class="block text-sm font-medium text-gray-700">Nível Requerido</label>
-                            <input type="number" id="modulo-level" name="modulo-level" value="1" min="1" required class="mt-1 w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-[#9A5CAD] focus:border-[#9A5CAD]">
+                                <div class="flex items-center gap-4">
+                                    <input 
+                                        type="range" 
+                                        id="modulo-level" 
+                                        name="modulo-level" 
+                                        min="0" 
+                                        max="10" 
+                                        value="1" 
+                                        step="1"
+                                        required 
+                                        class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#9A5CAD]"
+                                        oninput="document.getElementById('display-level').textContent = this.value"
+                                    >
+                                    
+                                    <span id="display-level" class="text-xl font-bold text-[#9A5CAD] w-6 text-center">
+                                        1
+                                    </span>
+                            </div>
                         </div>
                     </div>
                 </fieldset>

@@ -1,5 +1,44 @@
 import { supabase } from "/public/js/configs/config.js";
 
+async function checkAuth() {
+    // 0. Lista de rotas públicas (onde a verificação NÃO deve ocorrer)
+    // Adicionei '/' também, pois geralmente é o mesmo que '/index.html'
+    const publicPages = [
+        '/', 
+        '/index.html', 
+        '/src/login/index.html', 
+        '/src/cadastro/index.html'
+    ];
+
+    // Pega apenas o caminho da URL (ex: '/src/login/index.html')
+    const currentPath = window.location.pathname;
+
+    // SE a página atual estiver na lista de públicas, PARA AQUI.
+    if (publicPages.includes(currentPath)) {
+        console.log("Página pública. Verificação de auth pulada.");
+        return; 
+    }
+
+    // --- DAQUI PARA BAIXO SEGUE A LÓGICA NORMAL ---
+
+    // 1. Pergunta ao Supabase se tem sessão ativa
+    const { data } = await supabase.auth.getSession();
+
+    // 2. Se NÃO tiver sessão (usuário deslogado)
+    if (!data.session) {
+        // Opcional: Limpa qualquer lixo que tenha sobrado
+        await supabase.auth.signOut(); 
+        
+        // 3. Redireciona IMEDIATAMENTE para o login
+        window.location.href = "/src/login/index.html";
+    }
+}
+
+checkAuth();
+// Executa a verificação assim que o script ler esta linha
+
+
+
 // Garante que a função esteja disponível globalmente para o 'onclick'
 export function toggleSidebar() {
     console.log("toggleSidebar foi chamada!"); // Teste para ver se a função roda
@@ -138,3 +177,6 @@ async function handleLogout(event) {
 }
 
 window.handleLogout = handleLogout;
+
+
+

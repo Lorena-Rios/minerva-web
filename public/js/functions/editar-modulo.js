@@ -73,6 +73,59 @@ async function carregarDadosDoModulo() {
     }
 }
 
+// Função auxiliar para montar o objeto de dados (Payload)
+function buildPayload() {
+    console.log("--- Iniciando montagem do Payload (Versão SQL Corrigida) ---");
+
+    const inputTitulo = document.getElementById('modulo-nome'); 
+    const moduloLevel = document.getElementById('modulo-level');
+    const inputQuizTitulo = document.getElementById('quiz-titulo');
+
+    // Validação do Título do Quiz
+    let valorTituloQuiz = "Quiz Padrão";
+    if (inputQuizTitulo && inputQuizTitulo.value.trim() !== "") {
+        valorTituloQuiz = inputQuizTitulo.value;
+    }
+
+    // Coletar Temas
+    const temas = [];
+    document.querySelectorAll('.tema-block').forEach(block => {
+        const nome = block.querySelector('.tema-nome').value;
+        const conteudo = block.querySelector('.tema-conteudo').value;
+        const ordem = block.querySelector('.tema-ordem').value;
+        if (nome) temas.push({ nome, conteudo, ordem: parseInt(ordem || 0) });
+    });
+
+    // Coletar Perguntas
+    const perguntas = [];
+    document.querySelectorAll('.pergunta-block').forEach(block => {
+        const descricao = block.querySelector('.pergunta-descricao').value;
+        const alternativas = [];
+        block.querySelectorAll('.alternativa-item').forEach(item => {
+            const altDesc = item.querySelector('.alternativa-descricao').value;
+            const isCorreta = item.querySelector('input[type="radio"]').checked;
+            alternativas.push({ descricao: altDesc, is_correta: isCorreta });
+        });
+        perguntas.push({ descricao, alternativas });
+    });
+
+    // Payload Final ajustado para o SQL
+    const payloadFinal = {
+        nome: inputTitulo ? inputTitulo.value : "Sem Nome",
+        level_require: moduloLevel ? parseInt(moduloLevel.value) : 1,
+        temas: temas,
+        
+        // --- MUDANÇA AQUI: 'quiz' no singular e sem array [] ---
+        quiz: {
+            titulo: valorTituloQuiz,
+            perguntas: perguntas
+        }
+    };
+
+    console.log("Payload corrigido:", payloadFinal);
+    return payloadFinal;
+}
+
 // Preenche o formulário com os dados do módulo
 function populateForm(modulo) {
     // 1. Dados simples do módulo
@@ -281,6 +334,7 @@ btnExcluir.addEventListener('click', async () => {
         btnExcluir.textContent = 'Excluir Módulo';
     }
 });
+
 
 // --- Inicia o carregamento ---
 document.addEventListener('DOMContentLoaded', carregarDadosDoModulo);
