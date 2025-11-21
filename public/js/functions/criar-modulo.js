@@ -100,7 +100,53 @@ function criarAlternativaInput(perguntaId, altIndex) {
 form.addEventListener('submit', async (e) => {
     e.preventDefault(); // Impede o recarregamento da página
 
-    // Validação
+    // --- INÍCIO DA NOVA VALIDAÇÃO DE TEMAS ---
+    
+    // 1. Seleciona todos os blocos de tema atuais
+    const temaBlocks = document.querySelectorAll('.tema-block');
+
+    // 2. Verifica se existe pelo menos 1 tema
+    if (temaBlocks.length === 0) {
+        Toastify({
+            text: "Você precisa adicionar pelo menos 1 Tema de conteúdo!",
+            duration: 3000,
+            style: toastError
+        }).showToast();
+        return; // Para tudo aqui
+    }
+
+    // 3. Verifica se os campos dentro dos temas estão preenchidos
+    let temasIncompletos = false;
+    
+    temaBlocks.forEach((block, index) => {
+        const nome = block.querySelector('.tema-nome').value.trim();
+        const conteudo = block.querySelector('.tema-conteudo').value.trim();
+
+        // Se nome ou conteúdo estiverem vazios
+        if (!nome || !conteudo) {
+            temasIncompletos = true;
+            // Opcional: Adiciona uma borda vermelha no campo vazio para ajudar o usuário
+            if(!nome) block.querySelector('.tema-nome').classList.add('border-red-500');
+            if(!conteudo) block.querySelector('.tema-conteudo').classList.add('border-red-500');
+        } else {
+            // Remove a borda vermelha se estiver corrigido
+            block.querySelector('.tema-nome').classList.remove('border-red-500');
+            block.querySelector('.tema-conteudo').classList.remove('border-red-500');
+        }
+    });
+
+    if (temasIncompletos) {
+        Toastify({
+            text: "Por favor, preencha o Título e o Conteúdo de todos os temas adicionados.",
+            duration: 4000,
+            style: toastError
+        }).showToast();
+        return; // Para tudo aqui
+    }
+
+    // --- FIM DA VALIDAÇÃO DE TEMAS ---
+
+    // Validação das Perguntas (Mantida a original)
     if (perguntaCount !== 5) {
         Toastify({
             text: "Você deve criar exatamente 5 perguntas para o quiz.",
@@ -117,20 +163,14 @@ form.addEventListener('submit', async (e) => {
 
     try {
         // 1. Construir o Payload (o JSON)
-        // (Esta função é da resposta anterior)
         const payload = buildPayload(); 
 
-        // 2. Enviar a Requisição via RPC (Remote Procedure Call)
-        // 'criar_modulo_completo' -> nome da sua função SQL
-        // { data: payload }       -> argumentos da função
+        // 2. Enviar a Requisição via RPC
         const { data, error } = await supabase.rpc('criar_modulo_completo', { 
             data: payload 
         });
 
-        if (error) {
-            // Se o erro for da nossa checagem de 'professor', será amigável
-            throw error; // Lança o erro para o catch
-        }
+        if (error) throw error;
 
         // 3. Sucesso!
         Toastify({
@@ -151,7 +191,7 @@ form.addEventListener('submit', async (e) => {
         console.error('Erro ao criar missão:', error);
         Toastify({
             text: "Erro: " + error.message,
-            duration: 5000, // Um pouco mais longo para dar tempo de ler
+            duration: 5000,
             style: toastError
         }).showToast();
         
